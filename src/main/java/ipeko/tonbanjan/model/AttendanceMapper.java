@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 
 @Mapper
-public class AttendanceMapper {
+public interface AttendanceMapper {
 
   @Select("SELECT attendId,roomId,userId,attend_times from attendance where attendId = #{attendId};")
   Attendance selectById(int attendId);
@@ -35,11 +35,11 @@ public class AttendanceMapper {
    *
    * @return
    */
-  @Select("SELECT attendance.roomId,attendance.userId,attendance.attend_times,rooms.r_name,users.u_name from attendance JOIN rooms ON attendance.roomId=rooms.roomId JOIN users ON attendance.userId=users.userId;")
-  ArrayList<AttendanceRoomUser> selectAllAttendanceRoomUser();
+  //@Select("SELECT attendance.roomId,attendance.userId,attendance.attend_times,rooms.r_name,users.u_name from attendance JOIN rooms ON attendance.roomId=rooms.roomId JOIN users ON attendance.userId=users.userId;")
+  //ArrayList<AttendanceRoomUser> selectAllAttendanceRoomUser();
 
-  @Insert("INSERT INTO rooms (r_name) VALUES (#{r_name});")
-  void insertRooms(Rooms rooms);
+  //@Insert("INSERT INTO rooms (r_name) VALUES (#{r_name});")
+  //void insertRooms(Rooms rooms);
 
   @Insert("INSERT INTO users (u_name) VALUES (#{u_name});")
   void insertUsers(Users users);
