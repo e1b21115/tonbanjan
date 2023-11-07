@@ -13,7 +13,7 @@ public class TonbanjanController {
   /**
    * sample21というGETリクエストがあったら sample21()を呼び出し，sample21.htmlを返す
    */
-  @GetMapping("/waitingArea")
+  @GetMapping("/waitingRoom")
   public String sample21() {
     return "waitroom.html";
   }
