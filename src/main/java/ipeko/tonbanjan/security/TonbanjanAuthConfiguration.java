@@ -28,6 +28,8 @@ public class TonbanjanAuthConfiguration {
             .logoutUrl("/logout")
             .logoutSuccessUrl("/")) // ログアウト後に / にリダイレクト
         .authorizeHttpRequests(authz -> authz
+            .requestMatchers(AntPathRequestMatcher.antMatcher("/waitingRoom/**"))
+            .authenticated()
             .requestMatchers(AntPathRequestMatcher.antMatcher("/**"))
             .permitAll())// 上記以外は全員アクセス可能
         .csrf(csrf -> csrf
@@ -52,12 +54,13 @@ public class TonbanjanAuthConfiguration {
     // ハッシュ化されたパスワードを得るには，この授業のbashターミナルで下記のように末尾にユーザ名とパスワードを指定すると良い(要VPN)
     // $ sshrun htpasswd -nbBC 10 user1 p@ss
 
+    // $ sshrun htpasswd -nbBC 10 user1 p@ss
     UserDetails user1 = User.withUsername("user1")
-        .password("{bcrypt}$2y$10$ngxCDmuVK1TaGchiYQfJ1OAKkd64IH6skGsNw1sLabrTICOHPxC0e").roles("USER").build();
+        .password("{bcrypt}$2y$10$RTBVuLU8cWogbgMrPoPItuPz.kZSNG8q.98jVKNJBFqx6v0G8UdQu").roles("USER").build();
     UserDetails user2 = User.withUsername("user2")
-        .password("{bcrypt}$2y$10$ngxCDmuVK1TaGchiYQfJ1OAKkd64IH6skGsNw1sLabrTICOHPxC0e").roles("USER").build();
+        .password("{bcrypt}$2y$10$EHxZV90jvMPpdG93R39fOutiBp103qRsUSMswcY62mOVRTpPpBqE.").roles("USER").build();
     UserDetails admin = User.withUsername("admin")
-        .password("{bcrypt}$2y$10$ngxCDmuVK1TaGchiYQfJ1OAKkd64IH6skGsNw1sLabrTICOHPxC0e").roles("ADMIN").build();
+        .password("{bcrypt}$2y$10$dNYDu/FsSxtRYLwDu/coKOQKXH8EmyRTnyj/teQjItpJzGJTnEADu").roles("ADMIN").build();
 
     // 生成したユーザをImMemoryUserDetailsManagerに渡す（いくつでも良い）
     return new InMemoryUserDetailsManager(user1, user2, admin);
