@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 
 @Mapper
-public class AnswersMapper {
+public interface AnswersMapper {
 
   @Select("SELECT answerId,questionId,a_content from answers where answerId = #{answerId};")
   Answers selectById(int answerId);
@@ -35,8 +35,8 @@ public class AnswersMapper {
    *
    * @return
    */
-  @Select("SELECT answers.questionId,answers.a_content,questions.q_content from answers JOIN questions ON answers.questionId=questions.questionId;")
-  ArrayList<AnswersQuestions> selectAllAnswersQuestions();
+  //@Select("SELECT answers.questionId,answers.a_content,questions.q_content from answers JOIN questions ON answers.questionId=questions.questionId;")
+  //ArrayList<AnswersQuestions> selectAllAnswersQuestions();
 
   @Insert("INSERT INTO questions (q_content) VALUES (#{q_content});")
   void insertQuestions(Questions questions);
