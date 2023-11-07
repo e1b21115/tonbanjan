@@ -18,7 +18,3 @@ INSERT INTO
 VALUES
   (1, 1, 1);
 
-INSERT INTO
-  room (roomName)
-VALUES
-  ('部屋1');
