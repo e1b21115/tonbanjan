@@ -10,6 +10,9 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface QuestionsMapper {
 
+  @Select("SELECT questionId, roomId, q_content FROM questions;")
+  ArrayList<Questions> selectAllQuestions();
+
   @Select("SELECT questionId,roomId,userId,question,answer from questions where questionId = #{questionId};")
   Questions selectById(int questionId);
 
