@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>(授業名)アンケート</title>
+</head>
+
+<body>
+  <a href="/logout">ログアウト</a>
+  <h1>授業名</h1>
+  <p>
+    <!-- <a th:each="questions :${questions}">
+        roomid:[[${questions.roomid()}]] q_content:[[${questions.q_content}]]</a> -->
+  </p>
+  <h2>エントリー</h2>
+  <p>
+  <ul>
+    <li th:each="user : ${user}"><a th:href="@{/match(id=${user.id})}"> [[${user.userName}]]</a></li>
+  </ul>
+  </p>
+
+  <h2>アクティブな試合</h2>
+  <a th:each="matchinfoMapper :${matchinfoMappers}">
+    id:[[${matchinfoMapper.getId()}]]user1:[[${matchinfoMapper.getUser1()}]] user2:[[${matchinfoMapper.getuser2()}]]
+    isActive:[[${matchinfoMapper.getisActive}]]
+  </a>
+
+  <h2>試合結果</h2>
+  <div th:if="${match}">
+    <ul>
+      <li th:each="match :${match}">id:[[${match.getId()}]]user1:[[${match.getUser1()}]] user2:[[${match.getuser2()}]]
+        user1の手:[[${match.getuser1Hand()}]] user2の手:[[${match.getuser2Hand()}]]</li>
+    </ul>
+  </div>
+</body>
+
+</html>
