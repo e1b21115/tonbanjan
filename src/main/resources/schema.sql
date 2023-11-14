@@ -23,3 +23,8 @@ CREATE TABLE attendance(
   userId INT NOT NULL,
   attend_times INT
 );
+
+CREATE TABLE class (
+  classId IDENTITY,
+  className VARCHAR NOT NULL
+);
