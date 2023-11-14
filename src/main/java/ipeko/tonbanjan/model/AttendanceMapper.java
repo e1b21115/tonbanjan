@@ -40,7 +40,4 @@ public interface AttendanceMapper {
 
   //@Insert("INSERT INTO rooms (r_name) VALUES (#{r_name});")
   //void insertRooms(Rooms rooms);
-
-  @Insert("INSERT INTO users (u_name) VALUES (#{u_name});")
-  void insertUsers(Users users);
 }
