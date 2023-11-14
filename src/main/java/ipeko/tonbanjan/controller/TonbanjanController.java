@@ -1,5 +1,6 @@
 package ipeko.tonbanjan.controller;
 
+import java.security.Principal;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,15 @@ public class TonbanjanController {
   public String showClass(ModelMap model) {
     ArrayList<Questions> questions = qMapper.selectAllQuestions();
     model.addAttribute("questions", questions);
+    return "class.html";
+  }
+
+  @PostMapping("/addQuestion")
+  public String addQuestion(@RequestParam String q_content, ModelMap model, Principal prin){
+    Questions que = new Questions();
+    que.setQ_content(q_content);
+    que.setRoomId(2);
+    qMapper.insertQuestions(que);
     return "class.html";
   }
 

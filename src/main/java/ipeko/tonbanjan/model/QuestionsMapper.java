@@ -25,7 +25,7 @@ public interface QuestionsMapper {
    *
    * @param chamber
    */
-  @Insert("INSERT INTO questions (roomId,userId,question,answer) VALUES (#{roomId},#{userId},#{question},#{answer});")
+  @Insert("INSERT INTO questions (roomId,q_content) VALUES (#{roomId},#{q_content});")
   @Options(useGeneratedKeys = true, keyColumn = "questionId", keyProperty = "questionId")
   void insertQuestions(Questions questions);
 
@@ -38,9 +38,12 @@ public interface QuestionsMapper {
    *
    * @return
    */
-  //@Select("SELECT questions.roomId,questions.userId,questions.question,questions.answer,rooms.r_name,users.u_name from questions JOIN rooms ON questions.roomId=rooms.roomId JOIN users ON questions.userId=users.userId;")
-  //ArrayList<QuestionsRoomUser> selectAllQuestionsRoomUser();
+  // @Select("SELECT
+  // questions.roomId,questions.userId,questions.question,questions.answer,rooms.r_name,users.u_name
+  // from questions JOIN rooms ON questions.roomId=rooms.roomId JOIN users ON
+  // questions.userId=users.userId;")
+  // ArrayList<QuestionsRoomUser> selectAllQuestionsRoomUser();
 
-  //@Insert("INSERT INTO rooms (r_name) VALUES (#{r_name});")
-  //void insertRooms(Rooms rooms);
+  // @Insert("INSERT INTO rooms (r_name) VALUES (#{r_name});")
+  // void insertRooms(Rooms rooms);
 }
