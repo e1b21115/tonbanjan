@@ -11,32 +11,45 @@
   <h1>授業名</h1>
   <p>
     <a th:each="questions :${questions}">
-        id:[[${questions.getRoomId()}]]user1:[[${questions.getQ_content()}]]
-      </a>
-    </p>
+      id:[[${questions.getRoomId()}]]user1:[[${questions.getQ_content()}]]
+    </a>
+  </p>
 
-    <h2>授業形態に関するアンケート</h2>
-    <div class="radio_label">
-      <input type="radio" id="online" name="class" value="online" />
-      <label for="online">オンラインでの受講を希望する</label>
-    </div>
+  <h2>授業形態に関するアンケート</h2>
+  <div class="radio_label">
+    <input type="radio" id="online" name="class" value="online" />
+    <label for="online">オンラインでの受講を希望する</label>
+  </div>
 
-    <div class="radio_label">
-      <input type="radio" id="interview" name="class" value="interview" />
-      <label for="interview">対面での受講を希望する</label>
-    </div>
+  <div class="radio_label">
+    <input type="radio" id="interview" name="class" value="interview" />
+    <label for="interview">対面での受講を希望する</label>
+  </div>
 
-    <h2>授業に関する質問</h2>
-    <div>
-      <textarea id="question" name="question" rows="5" cols="33"></textarea>
-    </div>
-    <input type="submit" value="送信する">
+  <h2>授業に関する質問</h2>
+  <div>
+    <textarea id="question" name="question" rows="5" cols="33"></textarea>
+  </div>
+  <input type="submit" value="送信する">
+
+
+  <div sec:authorize="hasRole('ROLE_ADMIN')">
+    <a th:each="questions :${questions}">
+      id:[[${questions.getRoomId()}]]user1:[[${questions.getQ_content()}]]
+    </a>
+
+    <form th:action="@{/addQuestion}" method="post">
+      質問文<input type="text" name="q_content" />
+      <input type="submit" value="追加"><input type="reset" value="リセット">
+    </form>
+  </div>
+
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       var radioLabels = document.querySelectorAll('.radio_label');
-      radioLabels.forEach(function(label) {
-        label.addEventListener('click', function(event) {
+      radioLabels.forEach(function (label) {
+        label.addEventListener('click', function (event) {
           event.preventDefault();
           var inputEl = this.querySelector('input');
           inputEl.checked = !inputEl.checked;
@@ -45,4 +58,5 @@
     });
   </script>
 </body>
+
 </html>
