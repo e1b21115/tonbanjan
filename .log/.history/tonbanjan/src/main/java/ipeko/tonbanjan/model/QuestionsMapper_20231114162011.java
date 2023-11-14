@@ -25,13 +25,12 @@ public interface QuestionsMapper {
    *
    * @param chamber
    */
-  @Insert("INSERT INTO questions (roomId,q_content,q_amount) VALUES (#{roomId},#{q_content}, #{q_amount});")
+  @Insert("INSERT INTO questions (roomId,q_content) VALUES (#{roomId},#{q_content});")
   @Options(useGeneratedKeys = true, keyColumn = "questionId", keyProperty = "questionId")
   void insertQuestions(Questions questions);
 
   @Select("SELECT * from questions where question = #{question}")
   ArrayList<Questions> selectAllByQuestion(String question);
-
 
   /**
    * DBのカラム名とjavaクラスのフィールド名が同じ場合はそのまま代入してくれる（大文字小文字の違いは無視される）

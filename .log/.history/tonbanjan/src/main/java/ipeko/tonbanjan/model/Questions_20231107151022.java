@@ -3,7 +3,6 @@ package ipeko.tonbanjan.model;
 public class Questions {
   int questionId;
   int roomId;
-  int q_amount;
   String q_content;
 
   // Thymeleafでフィールドを扱うためにはgetter/setterが必ず必要
@@ -31,14 +30,6 @@ public class Questions {
 
   public void setQ_content(String q_content) {
     this.q_content = q_content;
-  }
-
-  public void setQuestionAmount(int q_amount) {
-    this.q_amount= q_amount;
-  }
-
-  public int getQuestionAmount() {
-    return q_amount;
   }
 
 }
