@@ -32,6 +32,15 @@
     </div>
     <input type="submit" value="送信する">
 
+    
+    <div sec:authorize="hasRole('ROLE_ADMIN')">
+      <a th:each="questions :${questions}">
+        id:[[${questions.getRoomId()}]]user1:[[${questions.getQ_content()}]]
+      </a>
+      <a>追加</a>
+    </div>
+
+
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       var radioLabels = document.querySelectorAll('.radio_label');
