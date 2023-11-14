@@ -18,3 +18,13 @@ INSERT INTO
 VALUES
   (1, 1, 1);
 
+INSERT INTO class (className)
+VALUES ('数学');
+INSERT INTO class (className)
+VALUES ('国語');
+INSERT INTO class (className)
+VALUES ('社会');
+INSERT INTO class (className)
+VALUES ('理科');
+INSERT INTO class (className)
+VALUES ('英語');
