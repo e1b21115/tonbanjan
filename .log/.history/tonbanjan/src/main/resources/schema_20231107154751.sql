@@ -1,8 +1,7 @@
 CREATE TABLE questions (
   questionId IDENTITY,
   roomId INT NOT NULL,
-  q_content VARCHAR NOT NULL,
-  q_amount INT
+  q_content VARCHAR NOT NULL
 );
 
 CREATE TABLE answers (

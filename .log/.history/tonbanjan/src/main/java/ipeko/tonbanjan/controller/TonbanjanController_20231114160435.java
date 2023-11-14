@@ -36,11 +36,10 @@ public class TonbanjanController {
   }
 
   @PostMapping("/addQuestion")
-  public String addQuestion(@RequestParam String q_content,@RequestParam Integer q_amount, ModelMap model, Principal prin){
+  public String addQuestion(@RequestParam String q_content, ModelMap model, Principal prin){
     Questions que = new Questions();
     que.setQ_content(q_content);
     que.setRoomId(2);
-    que.setQuestionAmount(q_amount);
     qMapper.insertQuestions(que);
     return "class.html";
   }

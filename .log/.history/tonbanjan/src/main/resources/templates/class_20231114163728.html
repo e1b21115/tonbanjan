@@ -35,7 +35,7 @@
 
   <div sec:authorize="hasRole('ROLE_ADMIN')">
     <a th:each="questions :${questions}">
-      id:[[${questions.getRoomId()}]]質問文:[[${questions.getQ_content()}]]
+      id:[[${questions.getRoomId()}]]user1:[[${questions.getQ_content()}]]
     </a>
 
     <form th:action="@{/addQuestion}" method="post">
