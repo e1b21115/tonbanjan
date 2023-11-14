@@ -35,9 +35,7 @@ public interface AnswersMapper {
    *
    * @return
    */
-  //@Select("SELECT answers.questionId,answers.a_content,questions.q_content from answers JOIN questions ON answers.questionId=questions.questionId;")
-  //ArrayList<AnswersQuestions> selectAllAnswersQuestions();
-
-  @Insert("INSERT INTO questions (q_content) VALUES (#{q_content});")
-  void insertQuestions(Questions questions);
+  // @Select("SELECT answers.questionId,answers.a_content,questions.q_content from
+  // answers JOIN questions ON answers.questionId=questions.questionId;")
+  // ArrayList<AnswersQuestions> selectAllAnswersQuestions();
 }
