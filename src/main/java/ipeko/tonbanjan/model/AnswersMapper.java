@@ -29,13 +29,6 @@ public interface AnswersMapper {
   @Select("SELECT * from answers where a_content = #{a_content}")
   ArrayList<Answers> selectAllByA_content(String a_content);
 
-  /**
-   * DBのカラム名とjavaクラスのフィールド名が同じ場合はそのまま代入してくれる（大文字小文字の違いは無視される）
-   * カラム名とフィールド名が異なる場合の対応も可能だが，いきなり複雑になるので，selectで指定するテーブル中のカラム名とクラスのフィールド名は同一になるよう設計することが望ましい
-   *
-   * @return
-   */
-  // @Select("SELECT answers.questionId,answers.a_content,questions.q_content from
-  // answers JOIN questions ON answers.questionId=questions.questionId;")
-  // ArrayList<AnswersQuestions> selectAllAnswersQuestions();
+  @Select("SELECT answers.questionId,answers.a_content,questions.q_content from answers JOIN questions ON answers.questionId=questions.questionId;")
+  ArrayList<AnswersQuestions> selectAllAnswersQuestions();
 }
