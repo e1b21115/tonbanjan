@@ -15,34 +15,25 @@
     </a>
   </p>
 
-  <h2>授業形態に関するアンケート</h2>
-  <div class="radio_label">
-    <input type="radio" id="online" name="class" value="online" />
-    <label for="online">オンラインでの受講を希望する</label>
-  </div>
-
-  <div class="radio_label">
-    <input type="radio" id="interview" name="class" value="interview" />
-    <label for="interview">対面での受講を希望する</label>
-  </div>
-
-  <h2>授業に関する質問</h2>
-  <div>
-    <textarea id="question" name="question" rows="5" cols="33"></textarea>
-  </div>
-  <input type="submit" value="送信する">
-
-
-  <div sec:authorize="hasRole('ROLE_ADMIN')">
+  <div sec:authorize="hasRole('ROLE_ADMIN')" th:object="${questions}">
     <a th:each="questions :${questions}">
       id:[[${questions.getRoomId()}]]質問文:[[${questions.getQ_content()}]]
     </a>
 
-    <form th:action="@{/addQuestion}" method="post">
-      質問文<input type="text" name="q_content" />
-      選択肢<input type="number" name="q_amount" />
+    <form th:action="@{/addQuestion}" method="post" id="question">
+      質問文<input type="text" name="q_content" /><br><br>
+
+      回答文<br>
+      <input type="text" name="a_content1" /><br>
+      <input type="text" name="a_content2" /><br>
+      <input type="text" name="a_content3" /><br>
+      <input type="text" name="a_content4" /><br>
       <input type="submit" value="追加"><input type="reset" value="リセット">
     </form>
+    <!-- <script th:inline="javascript" src="./js/answerform.js">
+      makeAnsForms();
+    </script>
+    <form id="answer"></form> -->
   </div>
 
 
