@@ -1,8 +1,8 @@
 package ipeko.tonbanjan.model;
 
 public class Class {
-  int classId;
-  String className;
+  public int classId;
+  public String className;
 
   public int getclassId() {
     return classId;

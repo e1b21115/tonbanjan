@@ -3,12 +3,12 @@
 
 <head>
   <meta charset="utf-8">
-  <title>(授業名)アンケート</title>
+  <title >アンケート</title>
 </head>
 
 <body>
   <a href="/logout">ログアウト</a>
-  <h1>授業名</h1>
+  <h1>[[${Class.className}]]</h1>
   <p>
     <a th:each="questions :${questions}">
       id:[[${questions.getRoomId()}]]user1:[[${questions.getQ_content()}]]

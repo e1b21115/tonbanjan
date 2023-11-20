@@ -9,6 +9,9 @@ import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface ClassMapper {
-  @Select("SELECT * FROM class;")
+  @Select("SELECT * from class")
   ArrayList<Class> selectAllclass();
+  
+  @Select("SELECT * FROM class WHERE classId = #{classId}")
+Class selectByClassId(int id);
 }
