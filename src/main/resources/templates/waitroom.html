@@ -14,11 +14,12 @@
   </h2>
 
   <h3>収集中のアンケート</h3>
-  <div th:if="${onroom}">
+  <p>
     <ul>
-      <li th:each="room : ${onroom}">[[${room.roomName}]]</li>
+      <li th:each="class : ${classlist}"><a th:href="@{/class(id=${class.classId})}"> [[${class.className}]]</a></li>
     </ul>
-  </div>
+    </p>
+  
 
   <h3>収集済みのアンケート</h3>
   <div th:if="${offroom}">
@@ -28,7 +29,6 @@
   </div>
 
   <a href="/logout">ログアウト</a>
-  <a href="/class">授業ルームへ</a>
 </body>
 
 </html>
