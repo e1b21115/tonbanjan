@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ipeko.tonbanjan.model.AnswersQuestions;
+import ipeko.tonbanjan.model.ClassMapper;
+import ipeko.tonbanjan.model.Class;
 import ipeko.tonbanjan.model.Answers;
 import ipeko.tonbanjan.model.AnswersMapper;
 import ipeko.tonbanjan.model.Questions;
@@ -26,18 +28,23 @@ public class TonbanjanController {
   @Autowired
   AnswersMapper aMapper;
 
+  @Autowired
+  ClassMapper cMapper;
+
   /**
    * sample21というGETリクエストがあったら sample21()を呼び出し，sample21.htmlを返す
    */
   @GetMapping("/waitingRoom")
-  public String sample21() {
+  public String go_waitroom(ModelMap model,Principal prin) {
+    ArrayList<Class> classlist=cMapper.selectAllclass();
+    model.addAttribute("classlist", classlist);
     return "waitroom.html";
   }
 
   @GetMapping("/class")
-  public String showClass(ModelMap model) {
-    ArrayList<Questions> questions = qMapper.selectAllQuestions();
-    model.addAttribute("questions", questions);
+  public String showClass(@RequestParam int id,ModelMap model) {
+    Class Class=cMapper.selectByClassId(id);
+    model.addAttribute("Class", Class);
     return "class.html";
   }
 
