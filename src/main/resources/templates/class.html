@@ -10,7 +10,7 @@
   <a href="/logout">ログアウト</a>
   <h1>[[${Class.className}]]</h1>
   <p>
-    <a th:each="questions :${questions}">
+    <a th:if="${questions}">
       id:[[${questions.getRoomId()}]]user1:[[${questions.getQ_content()}]]
     </a>
   </p>

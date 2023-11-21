@@ -43,8 +43,13 @@ public class TonbanjanController {
 
   @GetMapping("/class")
   public String showClass(@RequestParam int id,ModelMap model) {
-    Class Class=cMapper.selectByClassId(id);
+    Class Class = cMapper.selectByClassId(id);
     model.addAttribute("Class", Class);
+
+    int roomId = Class.getclassId();
+
+    Questions questions = qMapper.selectByRoomId(roomId);
+    model.addAttribute("questions", questions);
     return "class.html";
   }
 

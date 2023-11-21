@@ -20,6 +20,9 @@ public interface QuestionsMapper {
   @Options(useGeneratedKeys = true, keyColumn = "questionId", keyProperty = "questionId")
   void insertQuestions(Questions questions);
 
+  @Select("SELECT * from questions where roomId = #{roomId};")
+  Questions selectByRoomId(int roomId);
+
   @Select("SELECT * from questions where question = #{question}")
   ArrayList<Questions> selectAllByQuestion(String question);
 }
