@@ -36,6 +36,14 @@
     <form id="answer"></form> -->
   </div>
 
+  <div sec:authorize="hasRole('ROLE_USER')">
+    <p th:object=${questions}>
+      質問文:[[${questions.getQ_content()}]]<br><br>
+    </p>
+    <span th:each="answers:${answers}">
+      [[${answers.getA_content()}]]
+    </span>
+  </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
