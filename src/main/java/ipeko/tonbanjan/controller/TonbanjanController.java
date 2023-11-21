@@ -35,14 +35,14 @@ public class TonbanjanController {
    * sample21というGETリクエストがあったら sample21()を呼び出し，sample21.htmlを返す
    */
   @GetMapping("/waitingRoom")
-  public String go_waitroom(ModelMap model,Principal prin) {
-    ArrayList<Class> classlist=cMapper.selectAllclass();
+  public String go_waitroom(ModelMap model, Principal prin) {
+    ArrayList<Class> classlist = cMapper.selectAllclass();
     model.addAttribute("classlist", classlist);
     return "waitroom.html";
   }
 
   @GetMapping("/class")
-  public String showClass(@RequestParam int id,ModelMap model) {
+  public String showClass(@RequestParam int id, ModelMap model) {
     Class Class = cMapper.selectByClassId(id);
     model.addAttribute("Class", Class);
 
@@ -54,10 +54,17 @@ public class TonbanjanController {
   }
 
   @PostMapping("/addQuestion")
-  public String addQuestion(@RequestParam String q_content, @RequestParam String a_content1,
+  public String addQuestion(@RequestParam int id, @RequestParam String q_content, @RequestParam String a_content1,
       @RequestParam String a_content2,
       @RequestParam String a_content3, @RequestParam String a_content4, ModelMap model,
       Principal prin) {
+
+    Class Class = cMapper.selectByClassId(id);
+    model.addAttribute("Class", Class);
+    int roomId = Class.getclassId();
+
+    Questions questions = qMapper.selectByRoomId(roomId);
+    model.addAttribute("questions", questions);
     Questions que = new Questions();
     que.setQ_content(q_content);
     que.setRoomId(2);

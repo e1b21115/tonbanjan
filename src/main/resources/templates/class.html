@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title >アンケート</title>
+  <title>アンケート</title>
 </head>
 
 <body>
@@ -20,7 +20,7 @@
       id:[[${questions.getRoomId()}]]質問文:[[${questions.getQ_content()}]]
     </a>
 
-    <form th:action="@{/addQuestion}" method="post" id="question">
+    <form th:action="@{/addQuestion(id=${Class.classId})}" method="post" id="question">
       質問文<input type="text" name="q_content" /><br><br>
 
       回答文<br>
