@@ -2,6 +2,7 @@ package ipeko.tonbanjan.controller;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -50,6 +51,10 @@ public class TonbanjanController {
 
     Questions questions = qMapper.selectByRoomId(roomId);
     model.addAttribute("questions", questions);
+
+    ArrayList<Answers> answers = aMapper.selectByQuestionId(questions.getQuestionId());
+    model.addAttribute("answers", answers);
+
     return "class.html";
   }
 
@@ -100,35 +105,4 @@ public class TonbanjanController {
     }
     return "class.html";
   }
-
-  // @PostMapping("/addAnswers")
-  // public String addAnswer(ModelMap model,
-  // Principal prin) {
-  // int questionId = qMapper;
-  // if (a_content1 != null) {
-  // Answers ans1 = new Answers();
-  // ans1.setA_content(a_content1);
-  // ans1.setQuestionId(questionId);
-  // aMapper.insertAnswers(ans1);
-  // }
-  // if (a_content2 != null) {
-  // Answers ans2 = new Answers();
-  // ans2.setA_content(a_content2);
-  // ans2.setQuestionId(questionId);
-  // aMapper.insertAnswers(ans2);
-  // }
-  // if (a_content3 != null) {
-  // Answers ans3 = new Answers();
-  // ans3.setA_content(a_content3);
-  // ans3.setQuestionId(questionId);
-  // aMapper.insertAnswers(ans3);
-  // }
-  // if (a_content4 != null) {
-  // Answers ans4 = new Answers();
-  // ans4.setA_content(a_content4);
-  // ans4.setQuestionId(questionId);
-  // aMapper.insertAnswers(ans4);
-  // }
-  // return "class.html";
-  // }
 }
