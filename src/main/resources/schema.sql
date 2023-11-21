@@ -28,3 +28,9 @@ CREATE TABLE class (
   classId IDENTITY,
   className VARCHAR NOT NULL
 );
+
+CREATE TABLE send_answer (
+  sAnswerId IDENTITY,
+  answerId INT,
+  questionId INT NOT NULL
+);

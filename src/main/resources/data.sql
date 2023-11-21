@@ -77,3 +77,8 @@ INSERT INTO
   class (className)
 VALUES
   ('英語');
+
+INSERT INTO
+  send_answer (answerId,questionId)
+VALUES
+  (1, 1);
