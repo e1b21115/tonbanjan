@@ -6,7 +6,27 @@ VALUES
 INSERT INTO
   questions (roomId, q_content)
 VALUES
-  (1, '質問1');
+  (1, '数学好き？');
+
+INSERT INTO
+  questions (roomId, q_content)
+VALUES
+  (2, '国語好き？');
+
+INSERT INTO
+  questions (roomId, q_content)
+VALUES
+  (3, '社会好き？');
+
+INSERT INTO
+  questions (roomId, q_content)
+VALUES
+  (4, '理科好き？');
+
+INSERT INTO
+  questions (roomId, q_content)
+VALUES
+  (5, '英語好き？');
 
 INSERT INTO
   users (userName, password)
