@@ -13,6 +13,8 @@ public interface AnswersMapper {
   @Select("SELECT answerId,questionId,a_content from answers where answerId = #{answerId};")
   Answers selectById(int answerId);
 
+  @Select("SELECT answerId,questionId,a_content from answers where questionId = #{questionId};")
+  ArrayList<Answers> selectByQuestionId(int questionId);
   /**
    * #{userName}などはinsertの引数にあるChamberクラスのフィールドを表しています 引数に直接String
    * userNameなどと書いてもいけるはず
