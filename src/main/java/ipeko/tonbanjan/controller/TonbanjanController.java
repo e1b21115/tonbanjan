@@ -34,7 +34,7 @@ public class TonbanjanController {
   @Autowired
   ClassMapper cMapper;
 
-  @Autowired 
+  @Autowired
   SendMapper sMapper;
 
   /**
@@ -112,12 +112,18 @@ public class TonbanjanController {
   }
 
   @PostMapping("/addAnswer")
-  public String addAnswer(@RequestParam int id,@RequestParam int send_answer, ModelMap model,
+  public String addAnswer(@RequestParam int id,@RequestParam int q_id,@RequestParam int send_answer, ModelMap model,
       Principal prin) {
-        Send send = new Send();
-        send.setQuestionId(id);
-        send.setsendId(send_answer);
-        sMapper.insertQuestions(send);
-    return "class.html";
+    Class Class = cMapper.selectByClassId(id);
+    model.addAttribute("Class", Class);
+    Send send = new Send();
+    send.setQuestionId(q_id);
+    send.setsendId(send_answer);
+    sMapper.insertQuestions(send);
+
+    ArrayList<Class> classlist = cMapper.selectAllclass();
+    model.addAttribute("classlist", classlist);
+
+    return "waitroom.html";
   }
 }

@@ -43,8 +43,8 @@
     <span th:each="answers:${answers}">
       [[${answers.getA_content()}]]
     </span>
-    <form th:action="@{/addAnswer(id=${Class.classId})}" method="post" name="send_answer" id="send_answer">
-      <input type="number" min="1" max="4" step="1" oninput="validity.valid||(value='');" >
+    <form th:action="@{/addAnswer(id=${Class.classId}, q_id=${questions.getQuestionId()})}" method="post" id="send_answer">
+      <input type="number" name="send_answer" min="1" max="4" step="1" />
       <input type="submit" value="回答">
 
     </form>
