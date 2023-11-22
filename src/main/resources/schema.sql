@@ -1,8 +1,7 @@
 CREATE TABLE questions (
   questionId IDENTITY,
   roomId INT NOT NULL,
-  q_content VARCHAR NOT NULL,
-  q_amount INT
+  q_content VARCHAR NOT NULL
 );
 
 CREATE TABLE answers (
@@ -27,4 +26,10 @@ CREATE TABLE attendance(
 CREATE TABLE class (
   classId IDENTITY,
   className VARCHAR NOT NULL
+);
+
+CREATE TABLE send_answer (
+  sAnswerId IDENTITY,
+  answerId INT,
+  questionId INT NOT NULL
 );

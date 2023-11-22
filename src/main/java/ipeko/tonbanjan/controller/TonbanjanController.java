@@ -19,6 +19,8 @@ import ipeko.tonbanjan.model.Answers;
 import ipeko.tonbanjan.model.AnswersMapper;
 import ipeko.tonbanjan.model.Questions;
 import ipeko.tonbanjan.model.QuestionsMapper;
+import ipeko.tonbanjan.model.Send;
+import ipeko.tonbanjan.model.SendMapper;
 
 @Controller
 public class TonbanjanController {
@@ -31,6 +33,9 @@ public class TonbanjanController {
 
   @Autowired
   ClassMapper cMapper;
+
+  @Autowired
+  SendMapper sMapper;
 
   /**
    * sample21というGETリクエストがあったら sample21()を呼び出し，sample21.htmlを返す
@@ -104,5 +109,21 @@ public class TonbanjanController {
       aMapper.insertAnswers(ans4);
     }
     return "class.html";
+  }
+
+  @PostMapping("/addAnswer")
+  public String addAnswer(@RequestParam int id,@RequestParam int q_id,@RequestParam int send_answer, ModelMap model,
+      Principal prin) {
+    Class Class = cMapper.selectByClassId(id);
+    model.addAttribute("Class", Class);
+    Send send = new Send();
+    send.setQuestionId(q_id);
+    send.setsendId(send_answer);
+    sMapper.insertQuestions(send);
+
+    ArrayList<Class> classlist = cMapper.selectAllclass();
+    model.addAttribute("classlist", classlist);
+
+    return "waitroom.html";
   }
 }
