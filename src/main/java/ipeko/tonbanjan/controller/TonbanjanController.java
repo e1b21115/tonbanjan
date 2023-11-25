@@ -72,7 +72,7 @@ public class TonbanjanController {
     model.addAttribute("questions", questions);
     Questions que = new Questions();
     que.setQ_content(q_content);
-    que.setRoomId(2);
+    que.setRoomId(roomId);
     // que.setQuestionAmount(q_amount);
 
     // model.addAttribute("q_amount", q_amount);
