@@ -14,4 +14,9 @@ public interface ClassMapper {
 
   @Select("SELECT * FROM class WHERE classId = #{classId}")
   Class selectByClassId(int id);
+
+  @Insert("INSERT INTO class (className) VALUES (#{className});")
+  @Options(useGeneratedKeys = true, keyColumn = "classId", keyProperty = "classId")
+  void InsertClass(Class addclass);
+
 }
