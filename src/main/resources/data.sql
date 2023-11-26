@@ -1,27 +1,29 @@
-INSERT INTO
-  answers (questionId, a_content)
-VALUES
-  (1, '回答1');
+INSERT INTO answers (questionId, a_content) VALUES (1, '2');
+INSERT INTO answers (questionId, a_content) VALUES (1, '4');
+INSERT INTO answers (questionId, a_content) VALUES (1, '6');
+INSERT INTO answers (questionId, a_content) VALUES (1, '8');
 
 INSERT INTO
   answers (questionId, a_content)
 VALUES
-  (1, '回答2');
+  (2, '回答1');
 
 INSERT INTO
   answers (questionId, a_content)
 VALUES
-  (1, '回答3');
+  (2, '回答2');
 
 INSERT INTO
   answers (questionId, a_content)
 VALUES
-  (1, '回答4');
+  (2, '回答3');
 
 INSERT INTO
-  questions (roomId, q_content)
+  answers (questionId, a_content)
 VALUES
-  (1, '数学好き？');
+  (2, '回答4');
+
+INSERT INTO questions (roomId, q_content) VALUES (1, '2*3=');
 
 INSERT INTO
   questions (roomId, q_content)
@@ -81,4 +83,24 @@ VALUES
 INSERT INTO
   send_answer (answerId,questionId)
 VALUES
-  (1, 1);
+  (1, 2);
+
+INSERT INTO send_answer (answerId,questionId) VALUES (1, 1);
+INSERT INTO send_answer (answerId,questionId) VALUES (1, 1);
+INSERT INTO send_answer (answerId,questionId) VALUES (1, 1);
+INSERT INTO send_answer (answerId,questionId) VALUES (1, 1);
+INSERT INTO send_answer (answerId,questionId) VALUES (1, 1);
+INSERT INTO send_answer (answerId,questionId) VALUES (2, 1);
+INSERT INTO send_answer (answerId,questionId) VALUES (2, 1);
+INSERT INTO send_answer (answerId,questionId) VALUES (2, 1);
+INSERT INTO send_answer (answerId,questionId) VALUES (2, 1);
+INSERT INTO send_answer (answerId,questionId) VALUES (2, 1);
+INSERT INTO send_answer (answerId,questionId) VALUES (2, 1);
+INSERT INTO send_answer (answerId,questionId) VALUES (3, 1);
+INSERT INTO send_answer (answerId,questionId) VALUES (3, 1);
+INSERT INTO send_answer (answerId,questionId) VALUES (3, 1);
+INSERT INTO send_answer (answerId,questionId) VALUES (3, 1);
+INSERT INTO send_answer (answerId,questionId) VALUES (3, 1);
+INSERT INTO send_answer (answerId,questionId) VALUES (3, 1);
+INSERT INTO send_answer (answerId,questionId) VALUES (3, 1);
+INSERT INTO send_answer (answerId,questionId) VALUES (4, 1);
