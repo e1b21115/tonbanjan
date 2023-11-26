@@ -52,6 +52,7 @@ public class TonbanjanController {
   public String go_waitroom(ModelMap model, Principal prin) {
     ArrayList<Class> classlist = cMapper.selectAllclass();
     model.addAttribute("classlist", classlist);
+
     return "waitroom.html";
   }
 
@@ -144,5 +145,18 @@ public class TonbanjanController {
 
     }
     return emitter;
+  }
+
+  @PostMapping("/addClass")
+  public String addClass(@RequestParam String className, ModelMap model, Principal prin) {
+
+    Class addClass = new Class();
+    addClass.setclassName(className);
+    cMapper.InsertClass(addClass);
+
+    ArrayList<Class> classlist = cMapper.selectAllclass();
+    model.addAttribute("classlist", classlist);
+
+    return "waitroom.html";
   }
 }
