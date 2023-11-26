@@ -4,6 +4,8 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,6 +23,9 @@ import ipeko.tonbanjan.model.Questions;
 import ipeko.tonbanjan.model.QuestionsMapper;
 import ipeko.tonbanjan.model.Send;
 import ipeko.tonbanjan.model.SendMapper;
+import ipeko.tonbanjan.service.AsyncSumSAnswers;
+
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 @Controller
 public class TonbanjanController {
@@ -36,6 +41,9 @@ public class TonbanjanController {
 
   @Autowired
   SendMapper sMapper;
+
+  @Autowired
+  AsyncSumSAnswers ssa;
 
   /**
    * sample21というGETリクエストがあったら sample21()を呼び出し，sample21.htmlを返す
@@ -112,7 +120,7 @@ public class TonbanjanController {
   }
 
   @PostMapping("/addAnswer")
-  public String addAnswer(@RequestParam int id,@RequestParam int q_id,@RequestParam int send_answer, ModelMap model,
+  public String addAnswer(@RequestParam int id, @RequestParam int q_id, @RequestParam int send_answer, ModelMap model,
       Principal prin) {
     Class Class = cMapper.selectByClassId(id);
     model.addAttribute("Class", Class);
@@ -125,5 +133,16 @@ public class TonbanjanController {
     model.addAttribute("classlist", classlist);
 
     return "waitroom.html";
+  }
+
+  @GetMapping("SumSAns")
+  public SseEmitter pushConut() {
+    final SseEmitter emitter = new SseEmitter(Long.MAX_VALUE);
+    try {
+      this.ssa.count(emitter);
+    } catch (Exception e) {
+
+    }
+    return emitter;
   }
 }
