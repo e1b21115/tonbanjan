@@ -13,13 +13,21 @@
     <div sec:authentication="name" />
   </h2>
 
+  <div sec:authorize="hasRole('ROLE_ADMIN')" th:object="${class}">
+    <h3>アンケートを集計する科目を追加</h3>
+      <form th:action="@{/addClass}" method="post">
+        <input type="text" name="className"/>
+        <input type="submit" value="追加"><input type="reset" value="リセット">
+      </form>
+  </div>
+
   <h3>収集中のアンケート</h3>
   <p>
     <ul>
       <li th:each="class : ${classlist}"><a th:href="@{/class(id=${class.classId})}"> [[${class.className}]]</a></li>
     </ul>
     </p>
-  
+
 
   <h3>収集済みのアンケート</h3>
   <div th:if="${offroom}">
