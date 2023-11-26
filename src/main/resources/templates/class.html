@@ -18,7 +18,9 @@
   <div sec:authorize="hasRole('ROLE_ADMIN')" th:object="${questions}">
     <a th:each="questions :${questions}">
       id:[[${questions.getRoomId()}]]質問文:[[${questions.getQ_content()}]]
-    </a>
+    </a><br>
+    <a id="asum"></a>
+    <br>
 
     <form th:action="@{/addQuestion(id=${Class.classId})}" method="post" id="question">
       質問文<input type="text" name="q_content" /><br><br>
@@ -43,7 +45,8 @@
     <span th:each="answers:${answers}">
       [[${answers.getA_content()}]]
     </span>
-    <form th:action="@{/addAnswer(id=${Class.classId}, q_id=${questions.getQuestionId()})}" method="post" id="send_answer">
+    <form th:action="@{/addAnswer(id=${Class.classId}, q_id=${questions.getQuestionId()})}" method="post"
+      id="send_answer">
       <input type="number" name="send_answer" min="1" max="4" step="1" />
       <input type="submit" value="回答">
 
@@ -51,7 +54,7 @@
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    /* document.addEventListener('DOMContentLoaded', function () {
       var radioLabels = document.querySelectorAll('.radio_label');
       radioLabels.forEach(function (label) {
         label.addEventListener('click', function (event) {
@@ -60,7 +63,24 @@
           inputEl.checked = !inputEl.checked;
         });
       });
-    });
+    }); */
+    window.onload = function () {
+      var sse = new EventSource('/SumSAns');
+      sse.onmessage = function (event) {
+        var data = JSON.parse(event.data);
+        var output = "";
+        for (var i = 0; i < data.length; i = i + 4) {
+          if (data[i].questionId == 1) {
+            output += "質問Id: " + data[i].questionId + "<br>";
+            output += "選択肢1: " + data[i].amount + ", ";
+            output += "選択肢2: " + data[i + 1].amount + ", ";
+            output += "選択肢1: " + data[i + 2].amount + ", ";
+            output += "選択肢2: " + data[i + 3].amount + "<br>";
+          }
+        }
+        document.getElementById('asum').innerHTML = output;
+      }
+    }
   </script>
 </body>
 
