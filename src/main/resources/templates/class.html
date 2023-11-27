@@ -22,7 +22,7 @@
     <a id="asum"></a>
     <br>
 
-    <form th:action="@{/addQuestion(id=${Class.classId})}" method="post" id="question">
+    <form th:action="@{/addQuestion(id=${Class.classId})}" method="post" id="question" th:object="${Class}">
       質問文<input type="text" name="q_content" /><br><br>
 
       回答文<br>
