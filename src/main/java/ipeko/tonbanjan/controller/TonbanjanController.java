@@ -87,9 +87,7 @@ public class TonbanjanController {
     Questions que = new Questions();
     que.setQ_content(q_content);
     que.setRoomId(roomId);
-    // que.setQuestionAmount(q_amount);
 
-    // model.addAttribute("q_amount", q_amount);
     qMapper.insertQuestions(que);
     int questionId = que.getQuestionId();
 
