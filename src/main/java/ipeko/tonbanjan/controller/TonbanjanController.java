@@ -1,5 +1,6 @@
 package ipeko.tonbanjan.controller;
 
+import java.io.IOException;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +45,8 @@ public class TonbanjanController {
 
   @Autowired
   AsyncSumSAnswers ssa;
+
+  private final Logger logger = LoggerFactory.getLogger(TonbanjanController.class);
 
   /**
    * sample21というGETリクエストがあったら sample21()を呼び出し，sample21.htmlを返す
@@ -136,11 +139,13 @@ public class TonbanjanController {
 
   @GetMapping("SumSAns")
   public SseEmitter pushConut() {
+    logger.info("SumSAn");
     final SseEmitter emitter = new SseEmitter(Long.MAX_VALUE);
     try {
       this.ssa.count(emitter);
-    } catch (Exception e) {
-
+    } catch (IOException e) {
+      logger.warn("Exception" + e.getClass().getName() + ":" + e.getMessage());
+      emitter.complete();
     }
     return emitter;
   }
