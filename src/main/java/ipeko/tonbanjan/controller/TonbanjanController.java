@@ -1,5 +1,6 @@
 package ipeko.tonbanjan.controller;
 
+import java.io.IOException;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +46,8 @@ public class TonbanjanController {
   @Autowired
   AsyncSumSAnswers ssa;
 
+  private final Logger logger = LoggerFactory.getLogger(TonbanjanController.class);
+
   /**
    * sample21というGETリクエストがあったら sample21()を呼び出し，sample21.htmlを返す
    */
@@ -63,10 +66,16 @@ public class TonbanjanController {
 
     int roomId = Class.getclassId();
 
-    Questions questions = qMapper.selectByRoomId(roomId);
+    ArrayList<Questions> questions = qMapper.selectByRoomId(roomId);
     model.addAttribute("questions", questions);
 
-    ArrayList<Answers> answers = aMapper.selectByQuestionId(questions.getQuestionId());
+    ArrayList<Answers> answers = new ArrayList<Answers>();
+    for (Questions q : questions) {
+      ArrayList<Answers> hoge = aMapper.selectByQuestionId(q.getQuestionId());
+      for (Answers a : hoge) {
+        answers.add(a);
+      }
+    }
     model.addAttribute("answers", answers);
 
     return "class.html";
@@ -82,8 +91,6 @@ public class TonbanjanController {
     model.addAttribute("Class", Class);
     int roomId = Class.getclassId();
 
-    Questions questions = qMapper.selectByRoomId(roomId);
-    model.addAttribute("questions", questions);
     Questions que = new Questions();
     que.setQ_content(q_content);
     que.setRoomId(roomId);
@@ -115,6 +122,10 @@ public class TonbanjanController {
       ans4.setQuestionId(questionId);
       aMapper.insertAnswers(ans4);
     }
+
+    ArrayList<Questions> questions = qMapper.selectByRoomId(roomId);
+    model.addAttribute("questions", questions);
+
     return "class.html";
   }
 
@@ -136,12 +147,10 @@ public class TonbanjanController {
 
   @GetMapping("SumSAns")
   public SseEmitter pushConut() {
+    logger.info("SumSAn");
     final SseEmitter emitter = new SseEmitter(Long.MAX_VALUE);
-    try {
-      this.ssa.count(emitter);
-    } catch (Exception e) {
 
-    }
+    this.ssa.count(emitter);
     return emitter;
   }
 
