@@ -21,7 +21,7 @@ public interface QuestionsMapper {
   void insertQuestions(Questions questions);
 
   @Select("SELECT * from questions where roomId = #{roomId};")
-  Questions selectByRoomId(int roomId);
+  ArrayList<Questions> selectByRoomId(int roomId);
 
   @Select("SELECT count(questionId) from questions where roomId = #{roomId};")
   int selectMaxquestionByRoomId(int roomId);
