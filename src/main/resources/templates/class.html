@@ -9,15 +9,12 @@
 <body>
   <a href="/logout">ログアウト</a>
   <h1>[[${Class.className}]]</h1>
-  <p>
-    <a th:if="${questions}">
-      id:[[${questions.getRoomId()}]]user1:[[${questions.getQ_content()}]]
-    </a>
-  </p>
 
   <div sec:authorize="hasRole('ROLE_ADMIN')" th:object="${questions}">
     <a th:each="questions :${questions}">
-      id:[[${questions.getRoomId()}]]質問文:[[${questions.getQ_content()}]]
+      <ul>
+        <li>id:[[${questions.getRoomId()}]]質問文:[[${questions.getQ_content()}]]</li>
+      </ul>
     </a><br>
     <a id="asum"></a>
     <br>
@@ -39,18 +36,19 @@
   </div>
 
   <div sec:authorize="hasRole('ROLE_USER')">
-    <p th:object=${questions}>
+    <p th:each="questions:${questions}">
       質問文:[[${questions.getQ_content()}]]<br><br>
     </p>
     <span th:each="answers:${answers}">
       [[${answers.getA_content()}]]
     </span>
-    <form th:action="@{/addAnswer(id=${Class.classId}, q_id=${questions.getQuestionId()})}" method="post"
+    <a th:each="questions:${questions}">
+      <form th:action="@{/addAnswer(id=${Class.classId}, q_id=${questions.getQuestionId()})}" method="post"
       id="send_answer">
       <input type="number" name="send_answer" min="1" max="4" step="1" />
       <input type="submit" value="回答">
-
     </form>
+  </a>
   </div>
 
   <script>
