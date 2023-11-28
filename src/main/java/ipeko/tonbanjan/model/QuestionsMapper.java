@@ -16,7 +16,7 @@ public interface QuestionsMapper {
   @Select("SELECT questionId,roomId,question,answer from questions where questionId = #{questionId};")
   Questions selectById(int questionId);
 
-  @Insert("INSERT INTO questions (roomId,q_content,q_amount) VALUES (#{roomId},#{q_content}, #{q_amount});")
+  @Insert("INSERT INTO questions (roomId,q_content) VALUES (#{roomId},#{q_content});")
   @Options(useGeneratedKeys = true, keyColumn = "questionId", keyProperty = "questionId")
   void insertQuestions(Questions questions);
 
