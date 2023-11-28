@@ -27,7 +27,7 @@ public class AsyncSumSAnswers {
   private final Logger logger = LoggerFactory.getLogger(AsyncSumSAnswers.class);
 
   @Async
-  public void count(SseEmitter emitter) throws IOException {
+  public void count(SseEmitter emitter) {
     SendCount sc1;
     while (true) {
       ArrayList<SendCount> sc = new ArrayList<>();
@@ -40,10 +40,17 @@ public class AsyncSumSAnswers {
       }
       try {
         emitter.send(sc);
+      } catch (IOException e) {
+        logger.warn("Exception" + e.getClass().getName() + ":" + e.getMessage());
+        emitter.complete();
+      }
+
+      try {
         TimeUnit.SECONDS.sleep(1);
       } catch (InterruptedException e) {
         logger.warn("Exception" + e.getClass().getName() + ":" + e.getMessage());
       }
+
     }
   }
 
