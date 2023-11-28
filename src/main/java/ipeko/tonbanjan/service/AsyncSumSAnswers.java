@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -22,25 +24,26 @@ public class AsyncSumSAnswers {
   @Autowired
   SendMapper sMapper;
 
+  private final Logger logger = LoggerFactory.getLogger(AsyncSumSAnswers.class);
+
   @Async
   public void count(SseEmitter emitter) throws IOException {
     SendCount sc1;
-    try {
-      while (true) {
-        // ArrayList<SendCount> sc = sMapper.selectCountAnsQue();
-        ArrayList<SendCount> sc = new ArrayList<>();
-        int n = sMapper.selectMaxQue();
-        for (int i = 1; i < n + 1; i++) {
-          for (int j = 1; j < 5; j++) {
-            sc1 = new SendCount(i, j, sMapper.selectCountByAnsQue(j, i));
-            sc.add(sc1);
-          }
+    while (true) {
+      ArrayList<SendCount> sc = new ArrayList<>();
+      int n = sMapper.selectMaxQue();
+      for (int i = 1; i < n + 1; i++) {
+        for (int j = 1; j < 5; j++) {
+          sc1 = new SendCount(i, j, sMapper.selectCountByAnsQue(j, i));
+          sc.add(sc1);
         }
+      }
+      try {
         emitter.send(sc);
         TimeUnit.SECONDS.sleep(1);
+      } catch (InterruptedException e) {
+        logger.warn("Exception" + e.getClass().getName() + ":" + e.getMessage());
       }
-    } catch (InterruptedException e) {
-
     }
   }
 
