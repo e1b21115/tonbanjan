@@ -1,19 +1,18 @@
 package ipeko.tonbanjan.model;
 
 public class Users {
-  int userId;
+  int roomId;
   String userName;
-  String password;
 
   // Thymeleafでフィールドを扱うためにはgetter/setterが必ず必要
   // vscodeのソースコード右クリック->ソースアクションでsetter/getterを簡単に追加できる
 
-  public int getUserId() {
-    return userId;
+  public int getRoomId() {
+    return roomId;
   }
 
-  public void setUserId(int userId) {
-    this.userId = userId;
+  public void setUserId(int roomId) {
+    this.roomId = roomId;
   }
 
   public String getUserName() {
@@ -22,13 +21,5 @@ public class Users {
 
   public void setUserName(String userName) {
     this.userName = userName;
-  }
-
-  public String getPassword() {
-    return password;
-  }
-
-  public void setPassword(String password) {
-    this.password = password;
   }
 }

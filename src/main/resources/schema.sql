@@ -11,9 +11,8 @@ CREATE TABLE answers (
 );
 
 CREATE TABLE users (
-  userId IDENTITY,
-  userName VARCHAR NOT NULL,
-  password VARCHAR NOT NULL
+  roomId INT NOT NULL,
+  userName VARCHAR NOT NULL
 );
 
 CREATE TABLE attendance(
