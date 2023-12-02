@@ -22,7 +22,7 @@ public interface SendMapper {
   ArrayList<SendCount> selectCountAnsQue();
 
   @Select("SELECT count(answerid) FROM SEND_ANSWER WHERE questionid = #{questionid} and answerid = #{answerid};")
-  int selectCountByAnsQue(int answerid, int questionid);
+  int selectCountByAnsQue(int questionid, int answerid);
 
   @Select("SELECT max(questionid) from send_answer")
   int selectMaxQue();

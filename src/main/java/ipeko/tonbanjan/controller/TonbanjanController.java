@@ -24,6 +24,7 @@ import ipeko.tonbanjan.model.Questions;
 import ipeko.tonbanjan.model.QuestionsMapper;
 import ipeko.tonbanjan.model.Send;
 import ipeko.tonbanjan.model.SendMapper;
+import ipeko.tonbanjan.model.UsersMapper;
 import ipeko.tonbanjan.service.AsyncSumSAnswers;
 
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
@@ -44,6 +45,9 @@ public class TonbanjanController {
   SendMapper sMapper;
 
   @Autowired
+  UsersMapper uMapper;
+
+  @Autowired
   AsyncSumSAnswers ssa;
 
   private final Logger logger = LoggerFactory.getLogger(TonbanjanController.class);
@@ -53,6 +57,12 @@ public class TonbanjanController {
    */
   @GetMapping("/waitingRoom")
   public String go_waitroom(ModelMap model, Principal prin) {
+    String loginName = prin.getName();
+    if (uMapper.selectcountbyName(loginName) > 0) {
+      uMapper.UpdateUser(0, loginName);
+    } else {
+      uMapper.InsertUser(0, loginName);
+    }
     ArrayList<Class> classlist = cMapper.selectAllclass();
     model.addAttribute("classlist", classlist);
 
@@ -60,7 +70,11 @@ public class TonbanjanController {
   }
 
   @GetMapping("/class")
-  public String showClass(@RequestParam int id, ModelMap model) {
+  public String showClass(@RequestParam int id, ModelMap model, Principal prin) {
+    String loginName = prin.getName();
+    if (id != uMapper.selectbyName(loginName)) {
+      uMapper.UpdateUser(id, loginName);
+    }
     Class Class = cMapper.selectByClassId(id);
     model.addAttribute("Class", Class);
 
@@ -142,15 +156,17 @@ public class TonbanjanController {
     ArrayList<Class> classlist = cMapper.selectAllclass();
     model.addAttribute("classlist", classlist);
 
+    uMapper.UpdateUser(0, prin.getName());
     return "waitroom.html";
   }
 
   @GetMapping("SumSAns")
-  public SseEmitter pushConut() {
+  public SseEmitter pushConut(Principal prin) {
+    String loginUser = prin.getName();
     logger.info("SumSAn");
     final SseEmitter emitter = new SseEmitter(Long.MAX_VALUE);
 
-    this.ssa.count(emitter);
+    this.ssa.count(emitter, loginUser);
     return emitter;
   }
 
