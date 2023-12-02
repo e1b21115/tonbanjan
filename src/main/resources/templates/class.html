@@ -44,12 +44,14 @@
     </span>
     <a th:each="questions:${questions}">
       <form th:action="@{/addAnswer(id=${Class.classId}, q_id=${questions.getQuestionId()})}" method="post"
-      id="send_answer">
-      <input type="number" name="send_answer" min="1" max="4" step="1" />
-      <input type="submit" value="回答">
-    </form>
-  </a>
+        id="send_answer">
+        <input type="number" name="send_answer" min="1" max="4" step="1" />
+        <input type="submit" value="回答">
+      </form>
+    </a>
   </div>
+
+  <a href="/waitingRoom">戻る</a>
 
   <script>
     /* document.addEventListener('DOMContentLoaded', function () {
@@ -68,13 +70,11 @@
         var data = JSON.parse(event.data);
         var output = "";
         for (var i = 0; i < data.length; i = i + 4) {
-          if (data[i].questionId == 1) {
-            output += "質問Id: " + data[i].questionId + "<br>";
-            output += "選択肢1: " + data[i].amount + ", ";
-            output += "選択肢2: " + data[i + 1].amount + ", ";
-            output += "選択肢1: " + data[i + 2].amount + ", ";
-            output += "選択肢2: " + data[i + 3].amount + "<br>";
-          }
+          output += "質問Id: " + data[i].questionId + "<br>";
+          output += "選択肢1: " + data[i].amount + ", ";
+          output += "選択肢2: " + data[i + 1].amount + ", ";
+          output += "選択肢3: " + data[i + 2].amount + ", ";
+          output += "選択肢4: " + data[i + 3].amount + "<br>";
         }
         document.getElementById('asum').innerHTML = output;
       }
