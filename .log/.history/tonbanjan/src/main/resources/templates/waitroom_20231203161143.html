@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
+  <link rel="stylesheet" href="../templates/waitroom.css">
 <head>
   <meta charset="utf-8">
   <title>待合室</title>
 </head>
 
-<link rel="stylesheet" href="waitroom.css">
 
 <body>
   <h1>待合室</h1>
@@ -31,21 +31,5 @@
 
   <a href="/logout">ログアウト</a>
 </body>
-
-<script>
-  window.onload = function() {
-
-// CSSのリロードを強制的に実行
-const links = document.getElementsByTagName("link");
-for (let i = 0; i < links.length; i++) {
-  const link = links[i];
-  link.href = link.href; 
-}
-
-// あるいは
-// location.reload(true);
-
-}
-</script>
 
 </html>

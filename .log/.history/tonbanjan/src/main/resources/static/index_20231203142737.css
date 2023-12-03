@@ -1,0 +1,33 @@
+body {
+    background-image: url("oit.JPG");
+    background-size: cover;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+  }
+  
+  h1 {
+    font-size: 48px;
+    text-shadow: 2px 2px 2px #aaa;  
+    color: #61ed32;
+  }
+  
+  p {
+    background-color: rgba(255,255,255,0.8); 
+    padding: 20px; 
+    border-radius: 10px;
+    width: 60%;
+    margin: 0 auto;  
+  }
+  
+  a {
+    padding: 0.1em 0.3em;
+	background-image: linear-gradient(to right, rgba(0,0,0,0) 50%, rgb(246, 245, 244) 50%);
+	background-position: 0 0;
+	background-size: 200% auto;
+	transition: .3s;
+	color: #4800ff;
+  }
+  
+  a:hover {
+    background-position: -100% 0;
+	color: #fff;
+  }
