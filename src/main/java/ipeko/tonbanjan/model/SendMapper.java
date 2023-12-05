@@ -7,11 +7,10 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 
-import ipeko.tonbanjan.model.SendCount;
 
 @Mapper
 public interface SendMapper {
-  @Select("SELECT * form send_answer")
+  @Select("SELECT * from send_answer")
   Answers selectAllSend();
 
   @Insert("INSERT INTO send_answer (answerId, questionId) VALUES (#{answerId},#{questionId});")

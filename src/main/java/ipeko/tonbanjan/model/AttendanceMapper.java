@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface AttendanceMapper {
 
-  @Select("SELECT attendId,roomId,userId,attend_times from attendance where attendId = #{attendId};")
+  @Select("SELECT * from attendance where attendId = #{attendId};")
   Attendance selectById(int attendId);
 
   /**

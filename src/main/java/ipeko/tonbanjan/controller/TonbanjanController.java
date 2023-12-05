@@ -1,9 +1,7 @@
 package ipeko.tonbanjan.controller;
 
-import java.io.IOException;
 import java.security.Principal;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,11 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import ipeko.tonbanjan.model.AnswersQuestions;
 import ipeko.tonbanjan.model.ClassMapper;
 import ipeko.tonbanjan.model.Class;
 import ipeko.tonbanjan.model.Answers;
@@ -52,9 +48,6 @@ public class TonbanjanController {
 
   private final Logger logger = LoggerFactory.getLogger(TonbanjanController.class);
 
-  /**
-   * sample21というGETリクエストがあったら sample21()を呼び出し，sample21.htmlを返す
-   */
   @GetMapping("/waitingRoom")
   public String go_waitroom(ModelMap model, Principal prin) {
     String loginName = prin.getName();
@@ -160,16 +153,6 @@ public class TonbanjanController {
     return "waitroom.html";
   }
 
-  @GetMapping("SumSAns")
-  public SseEmitter pushConut(Principal prin) {
-    String loginUser = prin.getName();
-    logger.info("SumSAn");
-    final SseEmitter emitter = new SseEmitter(Long.MAX_VALUE);
-
-    this.ssa.count(emitter, loginUser);
-    return emitter;
-  }
-
   @PostMapping("/addClass")
   public String addClass(@RequestParam String className, ModelMap model, Principal prin) {
 
@@ -181,5 +164,15 @@ public class TonbanjanController {
     model.addAttribute("classlist", classlist);
 
     return "waitroom.html";
+  }
+
+  @GetMapping("SumSAns")
+  public SseEmitter pushConut(Principal prin) {
+    String loginUser = prin.getName();
+    logger.info("SumSAn");
+    final SseEmitter emitter = new SseEmitter(Long.MAX_VALUE);
+
+    this.ssa.count(emitter, loginUser);
+    return emitter;
   }
 }

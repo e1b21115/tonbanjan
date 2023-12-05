@@ -10,11 +10,8 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface QuestionsMapper {
 
-  @Select("SELECT questionId, roomId, q_content FROM questions;")
+  @Select("SELECT * FROM questions;")
   ArrayList<Questions> selectAllQuestions();
-
-  @Select("SELECT questionId,roomId,question,answer from questions where questionId = #{questionId};")
-  Questions selectById(int questionId);
 
   @Insert("INSERT INTO questions (roomId,q_content) VALUES (#{roomId},#{q_content});")
   @Options(useGeneratedKeys = true, keyColumn = "questionId", keyProperty = "questionId")
@@ -25,6 +22,9 @@ public interface QuestionsMapper {
 
   @Select("SELECT count(questionId) from questions where roomId = #{roomId};")
   int selectMaxquestionByRoomId(int roomId);
+
+  @Select("SELECT * from questions where questionId = #{questionId};")
+  ArrayList<Questions> selectQuestionByQuestionId(int questionId);
 
   @Select("SELECT * from questions where roomId = #{roomId}")
   ArrayList<Questions> selectQuestionByRoomId(int roomId);
