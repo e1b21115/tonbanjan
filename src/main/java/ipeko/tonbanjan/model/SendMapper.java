@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface SendMapper {
-  @Select("SELECT * form send_answer")
+  @Select("SELECT * from send_answer")
   Answers selectAllSend();
 
   @Insert("INSERT INTO send_answer (answerId, questionId) VALUES (#{answerId},#{questionId});")
