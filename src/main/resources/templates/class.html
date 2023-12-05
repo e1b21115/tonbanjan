@@ -15,7 +15,7 @@
   <div sec:authorize="hasRole('ROLE_ADMIN')" th:object="${questions}">
     <a th:each="questions :${questions}">
       <ul>
-        <li>id:[[${questions.getRoomId()}]]質問文:[[${questions.getQ_content()}]]</li>
+        <li>id:[[${questions.getRoomId()}]]  質問文:[[${questions.getQ_content()}]]</li>
       </ul>
     </a><br>
     <a id="asum"></a>
