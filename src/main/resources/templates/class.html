@@ -15,7 +15,7 @@
   <div sec:authorize="hasRole('ROLE_ADMIN')" th:object="${questions}">
     <a th:each="questions :${questions}">
       <ul>
-        <li>id:[[${questions.getRoomId()}]]  質問文:[[${questions.getQ_content()}]]</li>
+        <li>id:[[${questions.getRoomId()}]] 質問文:[[${questions.getQ_content()}]]</li>
       </ul>
     </a><br>
     <a id="asum"></a>
@@ -38,15 +38,18 @@
   </div>
 
   <div sec:authorize="hasRole('ROLE_USER')">
-    <p th:each="questions:${questions}">
-      質問文:[[${questions.getQ_content()}]]<br><br>
-    </p>
-    <span th:each="answers:${answers}">
-      [[${answers.getA_content()}]]
-    </span>
     <a th:each="questions:${questions}">
+      <a th:each="questions:${questions}">
+        質問文:[[${questions.getQ_content()}]]
+      </a><br>
+      <span th:each="answers:${answers}">
+        <a th:if="${questions.getQuestionId()} == ${answers.getQuestionId()}">
+          [[${answers.getA_content()}]]
+        </a>
+      </span><br>
       <form th:action="@{/addAnswer(id=${Class.classId}, q_id=${questions.getQuestionId()})}" method="post"
         id="send_answer">
+
         <input type="radio" id="send_answer1" name="send_answer" value="1" />
         <label for="send_answer1">1</label><br>
 
@@ -60,7 +63,7 @@
         <label for="send_answer4">4</label><br>
 
         <input type="submit" value="回答">
-      </form>
+      </form><br><br>
     </a>
   </div>
 
