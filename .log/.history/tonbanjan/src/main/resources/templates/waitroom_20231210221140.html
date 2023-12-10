@@ -26,16 +26,16 @@
       <li th:each="class : ${classlist}"><a th:href="@{/class(id=${class.classId})}"> [[${class.className}]]</a></li>
     </ul>
 
-    <h5 id="displaySettings" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')">
-      画面設定
-      <span style="display:none;">👁‍🗨</span>
-    </h5>
-  
-    <div id="settingMenu" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')">
-      <p>文字サイズ設定</p>
-      <button style="display:none;" onclick="fontSizeUp()">A+</button>
-      <button style="display:none;"onclick="fontSizeDown()">A-</button>
-    </div>
+    <h5>画面設定</h5>
+
+<p style="display:none;">文字サイズ設定</p>
+
+<button style="display:none;" onclick="fontSizeUp()">A+</button>
+<button style="display:none;" onclick="fontSizeDown()">A-</button>
+   
+<p style="display:none;">背景色設定</p>
+   
+<input style="display:none;" type="range" min="0" max="100" value="50" id="bgColor">
   <br>
   <a href="/logout">ログアウト</a>
 </body>
@@ -54,30 +54,54 @@ for (let i = 0; i < links.length; i++) {
 // location.reload(true);
 
 }
+
+const h3 = document.querySelector('h3');
+
+h3.addEventListener('click', () => {
+  h3.classList.toggle('open');
+  
+  const items = document.querySelectorAll('input');
+  
+  items.forEach(item => {
+    item.style.display = h3.classList.contains('open') ? 'block' : 'none';
+  });
+});
+
 const h4 = document.querySelector('h4');
-  const h5 = document.querySelector('h5');
 
+h4.addEventListener('click', () => {
+  h4.classList.toggle('open');
+  
+  const items = document.querySelectorAll('li');
+  
+  items.forEach(item => {
+    item.style.display = h4.classList.contains('open') ? 'block' : 'none';
+  });
+});
 
-  h4.addEventListener('click', () => {
-    h4.classList.toggle('open');
+const h5 = document.querySelector('h5');
 
-    const items = document.querySelectorAll('li');
+h5.addEventListener('click', () => {
 
-    items.forEach(item => {
-      item.style.display = h4.classList.contains('open') ? 'block' : 'none';
-    });
+  h5.classList.toggle('open');
+  
+  const items = document.querySelectorAll('p, button, input');
+
+  items.forEach(item => {
+    item.style.display = h5.classList.contains('open') ? 'block' : 'none'; 
   });
 
-  h5.addEventListener('click', () => {
-    h5.classList.toggle('open');
+});
 
-    const items = document.querySelectorAll('p, button');
+const links = document.querySelectorAll('li a');
 
-    items.forEach(item => {
-      item.style.display = h5.classList.contains('open') ? 'block' : 'none';
-    });
-  });
-
+links.forEach(link => {
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256); 
+  const b = Math.floor(Math.random() * 256);
+  
+  link.style.color = `rgb(${r}, ${g}, ${b})`;
+});
 
 const usernameDOM = document.getElementById("username");
 usernameDOM.style.fontSize = "20px";

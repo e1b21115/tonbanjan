@@ -35,6 +35,8 @@
       <p>文字サイズ設定</p>
       <button style="display:none;" onclick="fontSizeUp()">A+</button>
       <button style="display:none;"onclick="fontSizeDown()">A-</button>
+      <p>背景色設定</p>
+      <input style="display:none;" type="range" min="0" max="100" value="50" id="bgColor">
     </div>
   <br>
   <a href="/logout">ログアウト</a>
@@ -54,9 +56,21 @@ for (let i = 0; i < links.length; i++) {
 // location.reload(true);
 
 }
-const h4 = document.querySelector('h4');
-  const h5 = document.querySelector('h5');
 
+const h3 = document.querySelector('h3');
+
+  h3.addEventListener('click', () => {
+    h3.classList.toggle('open');
+
+    const items = document.querySelectorAll('input');
+
+    items.forEach(item => {
+      item.style.display = h3.classList.contains('open') ? 'block' : 'none';
+    });
+  });
+
+  const h4 = document.querySelector('h4');
+  const h5 = document.querySelector('h5');
 
   h4.addEventListener('click', () => {
     h4.classList.toggle('open');
@@ -71,13 +85,22 @@ const h4 = document.querySelector('h4');
   h5.addEventListener('click', () => {
     h5.classList.toggle('open');
 
-    const items = document.querySelectorAll('p, button');
+    const items = document.querySelectorAll('p, button, input');
 
     items.forEach(item => {
       item.style.display = h5.classList.contains('open') ? 'block' : 'none';
     });
   });
 
+const links = document.querySelectorAll('li a');
+
+links.forEach(link => {
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256); 
+  const b = Math.floor(Math.random() * 256);
+  
+  link.style.color = `rgb(${r}, ${g}, ${b})`;
+});
 
 const usernameDOM = document.getElementById("username");
 usernameDOM.style.fontSize = "20px";

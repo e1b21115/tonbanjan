@@ -33,24 +33,26 @@ h3 {
   color: white;
   background: steelblue;
   padding: 1% 2%;  
+  cursor: pointer;
 }
-/* 
+
 h3.open {
   background: midnightblue;
   padding-left: 4%;
-} */
-/* 
+}
+
 form {
   margin: 4% 4%; 
-} */
-/* 
+  display: none;
+}
+
 h3.open + form {
   display: block;
-} */
-/* 
-h3 form input {
+}
+
+h3.open + form input {
   display: inline-block;
-} */
+}
 /* 
 input[type="submit"],
 input[type="reset"] {
@@ -99,7 +101,7 @@ h5 {
   cursor: pointer;
 }
 
-h5.open {
+/* h5.open {
   background-color: midnightblue;
   padding-left: 4%;
 }
@@ -114,10 +116,9 @@ button {
   display: none;
 }
 
-h5.open + p button{
+h5.open + p input button{
   display: block;
-}
-
+} */
 
 
 a {
@@ -135,7 +136,7 @@ input[type="text"] {
 }
 
 
-input[type="submit"],input[type="reset"],input[type="range"] {
+input[type="submit"],input[type="reset"] {
   padding: 4px 12px;
   background-color: #088da5;
   color: white;

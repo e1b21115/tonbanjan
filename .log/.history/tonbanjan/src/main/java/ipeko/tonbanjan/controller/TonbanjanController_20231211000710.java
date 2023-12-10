@@ -156,7 +156,7 @@ public class TonbanjanController {
 
   @PostMapping("/addClass")
   public String addClass(@RequestParam String className, ModelMap model, Principal prin) {
-    String loginName = prin.getName();
+
     Class addClass = new Class();
     addClass.setclassName(className);
     cMapper.InsertClass(addClass);
