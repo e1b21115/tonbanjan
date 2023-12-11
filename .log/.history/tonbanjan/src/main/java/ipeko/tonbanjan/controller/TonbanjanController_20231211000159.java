@@ -58,7 +58,6 @@ public class TonbanjanController {
     }
     ArrayList<Class> classlist = cMapper.selectAllclass();
     model.addAttribute("classlist", classlist);
-    model.addAttribute("loginName", loginName);
 
     return "waitroom.html";
   }
@@ -85,7 +84,7 @@ public class TonbanjanController {
       }
     }
     model.addAttribute("answers", answers);
-    model.addAttribute("loginName", loginName);
+
     return "class.html";
   }
 
@@ -156,14 +155,14 @@ public class TonbanjanController {
 
   @PostMapping("/addClass")
   public String addClass(@RequestParam String className, ModelMap model, Principal prin) {
-    String loginName = prin.getName();
+
     Class addClass = new Class();
     addClass.setclassName(className);
     cMapper.InsertClass(addClass);
 
     ArrayList<Class> classlist = cMapper.selectAllclass();
     model.addAttribute("classlist", classlist);
-     model.addAttribute("loginName", loginName);
+
     return "waitroom.html";
   }
 
