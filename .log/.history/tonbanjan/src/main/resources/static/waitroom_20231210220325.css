@@ -5,7 +5,7 @@ body {
   background: #fff;
 }
 
-h1, h2, h3, h4, h5 {
+h1, h2, h3 {
   border-left: 5px solid #088da5;
   padding-left: 10px; 
 }
@@ -33,24 +33,26 @@ h3 {
   color: white;
   background: steelblue;
   padding: 1% 2%;  
+  cursor: pointer;
 }
-/* 
+
 h3.open {
   background: midnightblue;
   padding-left: 4%;
-} */
-/* 
+}
+
 form {
   margin: 4% 4%; 
-} */
-/* 
+  display: none;
+}
+
 h3.open + form {
   display: block;
-} */
-/* 
-h3 form input {
+}
+
+h3.open + form input {
   display: inline-block;
-} */
+}
 /* 
 input[type="submit"],
 input[type="reset"] {
@@ -87,7 +89,7 @@ li {
   cursor: pointer;
 }
 
-h4.open + ul li{
+h4.open + ul li p{
   display: block;
 }
 
@@ -96,29 +98,32 @@ h5 {
   color: white;
   background: steelblue;
   padding: 1% 2%;
-  cursor: pointer;
+  cursor: pointer;   
 }
 
 h5.open {
-  background-color: midnightblue;
+  background: midnightblue;
   padding-left: 4%;
 }
 
-p {
-  margin: 4% 4%; 
-  display: none;
-}
-
 button {
-  margin: 4% 4%; 
-  display: none;
+  margin: 2% 4%;
+  list-style: none;
+  padding-left: 0;
 }
 
-h5.open + p button{
+input {
+  display: none;
+  padding: 8px 16px;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px #aaa;
+  cursor: pointer;
+}
+
+h5.open + input button {
   display: block;
 }
-
-
 
 a {
   color: #088da5;
@@ -134,8 +139,7 @@ input[type="text"] {
   border: 1px solid #ccc;  
 }
 
-
-input[type="submit"],input[type="reset"],input[type="range"] {
+input[type="submit"],input[type="reset"] {
   padding: 4px 12px;
   background-color: #088da5;
   color: white;
