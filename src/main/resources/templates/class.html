@@ -22,13 +22,13 @@
     <br>
 
     <form th:action="@{/addQuestion(id=${Class.classId})}" method="post" id="question" th:object="${Class}">
-      質問文<input type="text" name="q_content" /><br><br>
+      質問文<input type="text" name="q_content" required /><br><br>
 
       回答文<br>
-      <input type="text" name="a_content1" /><br>
-      <input type="text" name="a_content2" /><br>
-      <input type="text" name="a_content3" /><br>
-      <input type="text" name="a_content4" /><br>
+      <input type="text" name="a_content1" required /><br>
+      <input type="text" name="a_content2" required /><br>
+      <input type="text" name="a_content3" required /><br>
+      <input type="text" name="a_content4" required /><br>
       <input type="submit" value="追加"><input type="reset" value="リセット">
     </form>
     <!-- <script th:inline="javascript" src="./js/answerform.js">
@@ -39,28 +39,34 @@
 
   <div sec:authorize="hasRole('ROLE_USER')">
     <a th:each="questions:${questions}">
-      <a th:each="questions:${questions}">
-        質問文:[[${questions.getQ_content()}]]
-      </a><br>
-      <span th:each="answers:${answers}">
-        <a th:if="${questions.getQuestionId()} == ${answers.getQuestionId()}">
-          [[${answers.getA_content()}]]
-        </a>
-      </span><br>
+      質問文:[[${questions.getQ_content()}]] <br>
       <form th:action="@{/addAnswer(id=${Class.classId}, q_id=${questions.getQuestionId()})}" method="post"
         id="send_answer">
 
         <input type="radio" id="send_answer1" name="send_answer" value="1" />
-        <label for="send_answer1">1</label><br>
+        <label for="send_answer1" th:each="answers:${answers}"
+          th:if="${questions.getQuestionId() == answers.getQuestionId() && answers.getAnswerId() % 4 == 1}">
+          [[${answers.getA_content()}]]
+        </label><br>
+
 
         <input type="radio" id="send_answer2" name="send_answer" value="2" />
-        <label for="send_answer2">2</label><br>
+        <label for="send_answer1" th:each="answers:${answers}"
+          th:if="${questions.getQuestionId() == answers.getQuestionId() && answers.getAnswerId() % 4 == 2}">
+          [[${answers.getA_content()}]]
+        </label><br>
 
         <input type="radio" id="send_answer3" name="send_answer" value="3" />
-        <label for="send_answer3">3</label><br>
+        <label for="send_answer1" th:each="answers:${answers}"
+          th:if="${questions.getQuestionId() == answers.getQuestionId() && answers.getAnswerId() % 4 == 3}">
+          [[${answers.getA_content()}]]
+        </label><br>
 
         <input type="radio" id="send_answer4" name="send_answer" value="4" />
-        <label for="send_answer4">4</label><br>
+        <label for="send_answer1" th:each="answers:${answers}"
+          th:if="${questions.getQuestionId() == answers.getQuestionId() && answers.getAnswerId() % 4 == 0}">
+          [[${answers.getA_content()}]]
+        </label><br>
 
         <input type="submit" value="回答">
       </form><br><br>
