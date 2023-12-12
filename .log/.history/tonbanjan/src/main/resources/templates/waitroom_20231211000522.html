@@ -11,7 +11,7 @@
 <body>
   <h1>待合室</h1>
 
-  <h2><span id="username">Hi [[${loginName}]]</span></h2>
+  <h2><span id="username">Hi [[${loguinName}]]</span></h2>
 
   <div sec:authorize="hasRole('ROLE_ADMIN')" th:object="${class}">
     <h3>アンケートを集計する科目を追加</h3>

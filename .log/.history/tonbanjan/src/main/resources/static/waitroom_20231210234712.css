@@ -33,24 +33,26 @@ h3 {
   color: white;
   background: steelblue;
   padding: 1% 2%;  
+  cursor: pointer;
 }
 /* 
 h3.open {
   background: midnightblue;
   padding-left: 4%;
 } */
-/* 
+
 form {
   margin: 4% 4%; 
-} */
+  display: none;
+}
 /* 
 h3.open + form {
   display: block;
 } */
-/* 
-h3 form input {
+
+h3 + form input {
   display: inline-block;
-} */
+}
 /* 
 input[type="submit"],
 input[type="reset"] {
@@ -114,7 +116,7 @@ button {
   display: none;
 }
 
-h5.open + p button{
+h5.open + p button input{
   display: block;
 }
 

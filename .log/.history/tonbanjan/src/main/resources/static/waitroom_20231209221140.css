@@ -5,7 +5,7 @@ body {
   background: #fff;
 }
 
-h1, h2, h3, h4, h5 {
+h1, h2, h3 {
   border-left: 5px solid #088da5;
   padding-left: 10px; 
 }
@@ -33,24 +33,17 @@ h3 {
   color: white;
   background: steelblue;
   padding: 1% 2%;  
+  cursor: pointer;
 }
-/* 
+
 h3.open {
   background: midnightblue;
   padding-left: 4%;
-} */
-/* 
+}
+
 form {
   margin: 4% 4%; 
-} */
-/* 
-h3.open + form {
-  display: block;
-} */
-/* 
-h3 form input {
-  display: inline-block;
-} */
+}
 /* 
 input[type="submit"],
 input[type="reset"] {
@@ -58,6 +51,13 @@ input[type="reset"] {
   margin-top: 10px;  
   margin-right: 10px;
 } */
+
+h3.open + form input {
+  display: block;
+}
+
+
+
 
 h4 {
   transition: 0.5s;
@@ -87,38 +87,9 @@ li {
   cursor: pointer;
 }
 
-h4.open + ul li{
+h4.open + ul li {
   display: block;
 }
-
-h5 {
-  transition: 0.5s;
-  color: white;
-  background: steelblue;
-  padding: 1% 2%;
-  cursor: pointer;
-}
-
-h5.open {
-  background-color: midnightblue;
-  padding-left: 4%;
-}
-
-p {
-  margin: 4% 4%; 
-  display: none;
-}
-
-button {
-  margin: 4% 4%; 
-  display: none;
-}
-
-h5.open + p button{
-  display: block;
-}
-
-
 
 a {
   color: #088da5;
@@ -134,8 +105,7 @@ input[type="text"] {
   border: 1px solid #ccc;  
 }
 
-
-input[type="submit"],input[type="reset"],input[type="range"] {
+input[type="submit"] {
   padding: 4px 12px;
   background-color: #088da5;
   color: white;
