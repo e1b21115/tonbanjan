@@ -35,6 +35,8 @@
       <p>文字サイズ設定</p>
       <button style="display:none;" onclick="fontSizeUp()">A+</button>
       <button style="display:none;"onclick="fontSizeDown()">A-</button>
+      <p>背景色設定</p>
+      <input style="display:none;" type="range" min="0" max="100" value="50" id="bgColor">
     </div>
   <br>
   <a href="/logout">ログアウト</a>
@@ -71,7 +73,7 @@ const h4 = document.querySelector('h4');
   h5.addEventListener('click', () => {
     h5.classList.toggle('open');
 
-    const items = document.querySelectorAll('p, button');
+    const items = document.querySelectorAll('p, button, input');
 
     items.forEach(item => {
       item.style.display = h5.classList.contains('open') ? 'block' : 'none';

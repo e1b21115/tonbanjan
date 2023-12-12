@@ -1,0 +1,11 @@
+/* 白背景&黒文字 */
+body {
+    background-color: #fff;
+    color: #000;
+  }
+  
+  /* 黒背景&白文字 */  
+  body.high-contrast {
+    background-color: #000;
+    color: #fff; 
+  }
