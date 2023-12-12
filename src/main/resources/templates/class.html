@@ -51,19 +51,19 @@
 
 
         <input type="radio" id="send_answer2" name="send_answer" value="2" />
-        <label for="send_answer1" th:each="answers:${answers}"
+        <label for="send_answer2" th:each="answers:${answers}"
           th:if="${questions.getQuestionId() == answers.getQuestionId() && answers.getAnswerId() % 4 == 2}">
           [[${answers.getA_content()}]]
         </label><br>
 
         <input type="radio" id="send_answer3" name="send_answer" value="3" />
-        <label for="send_answer1" th:each="answers:${answers}"
+        <label for="send_answer3" th:each="answers:${answers}"
           th:if="${questions.getQuestionId() == answers.getQuestionId() && answers.getAnswerId() % 4 == 3}">
           [[${answers.getA_content()}]]
         </label><br>
 
         <input type="radio" id="send_answer4" name="send_answer" value="4" />
-        <label for="send_answer1" th:each="answers:${answers}"
+        <label for="send_answer4" th:each="answers:${answers}"
           th:if="${questions.getQuestionId() == answers.getQuestionId() && answers.getAnswerId() % 4 == 0}">
           [[${answers.getA_content()}]]
         </label><br>
@@ -86,9 +86,10 @@
         });
       });
     }); */
+
     window.onload = function () {
-      var sse = new EventSource('/SumSAns');
-      sse.onmessage = function (event) {
+      var sse1 = new EventSource('/SumSAns');
+      sse1.onmessage = function (event) {
         var data = JSON.parse(event.data);
         var output = "";
         for (var i = 0; i < data.length; i = i + 4) {
