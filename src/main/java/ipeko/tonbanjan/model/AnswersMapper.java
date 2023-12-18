@@ -15,6 +15,9 @@ public interface AnswersMapper {
 
   @Select("SELECT * from answers where questionId = #{questionId};")
   ArrayList<Answers> selectByQuestionId(int questionId);
+
+  @Select("SELECT a_content FROM answers where questionId = #{questionId};")
+  ArrayList<String> selectA_contentByQuestionId(int questionId);
   /**
    * #{userName}などはinsertの引数にあるChamberクラスのフィールドを表しています 引数に直接String
    * userNameなどと書いてもいけるはず
@@ -28,8 +31,8 @@ public interface AnswersMapper {
   @Options(useGeneratedKeys = true, keyColumn = "answerId", keyProperty = "answerId")
   void insertAnswers(Answers answers);
 
-  @Select("SELECT * from answers where a_content = #{a_content}")
-  ArrayList<Answers> selectAllByA_content(String a_content);
+  @Select("SELECT a_content FROM answers;")
+  ArrayList<Answers> selectAllA_content();
 
   @Select("SELECT answers.questionId,answers.a_content,questions.q_content from answers JOIN questions ON answers.questionId=questions.questionId;")
   ArrayList<AnswersQuestions> selectAllAnswersQuestions();
