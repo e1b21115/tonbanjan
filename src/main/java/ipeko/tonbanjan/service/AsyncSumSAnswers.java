@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import ipeko.tonbanjan.model.SendCount;
+import ipeko.tonbanjan.model.AnswersMapper;
 import ipeko.tonbanjan.model.Questions;
 import ipeko.tonbanjan.model.QuestionsMapper;
 import ipeko.tonbanjan.model.SendMapper;
@@ -19,6 +20,9 @@ import ipeko.tonbanjan.model.UsersMapper;
 
 @Service
 public class AsyncSumSAnswers {
+
+  @Autowired
+  AnswersMapper aMapper;
 
   @Autowired
   QuestionsMapper qMapper;
@@ -39,10 +43,13 @@ public class AsyncSumSAnswers {
       ArrayList<Questions> que = qMapper.selectQuestionByRoomId(id);
       ArrayList<SendCount> sc = new ArrayList<>();
       for (Questions qu : que) {
-        for (int i = 1; i < 5; i++) {
-          int qid = qu.getQuestionId();
-          sc1 = new SendCount(qid, i, sMapper.selectCountByAnsQue(qid, i));
+        int qid = qu.getQuestionId();
+        ArrayList<String> acon = aMapper.selectA_contentByQuestionId(qid);
+        int i = 1;
+        for (String ac : acon) {
+          sc1 = new SendCount(qid, i, ac, sMapper.selectCountByAnsQue(qid, i));
           sc.add(sc1);
+          i++;
         }
       }
       try {
