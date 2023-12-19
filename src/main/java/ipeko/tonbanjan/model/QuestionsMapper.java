@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Delete;
 
 @Mapper
 public interface QuestionsMapper {
@@ -32,4 +33,9 @@ public interface QuestionsMapper {
   @Select("SELECT * from questions where question = #{question}")
   ArrayList<Questions> selectAllByQuestion(String question);
 
+  @Select("Select roomId from questions where questionId = #{questionId}")
+  int selectRoomIdByQuestionId(int questionId);
+
+  @Delete("Delete from Questions where questionId = #{questionId}")
+  void deleteByQuestionId(int questionId);
 }

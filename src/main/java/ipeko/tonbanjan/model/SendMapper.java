@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Delete;
 
 
 @Mapper
@@ -25,4 +26,7 @@ public interface SendMapper {
 
   @Select("SELECT max(questionid) from send_answer")
   int selectMaxQue();
+
+  @Delete("Delete from send_answer where questionId =#{questionId}")
+void deleteByQuestionId(int questionId);
 }
