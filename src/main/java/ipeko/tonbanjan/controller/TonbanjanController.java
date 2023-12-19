@@ -142,6 +142,7 @@ public class TonbanjanController {
       Principal prin) {
     Class Class = cMapper.selectByClassId(id);
     model.addAttribute("Class", Class);
+    int roomId = Class.getclassId();
     Send send = new Send();
     send.setQuestionId(q_id);
     send.setsendId(send_answer);
@@ -150,8 +151,26 @@ public class TonbanjanController {
     ArrayList<Class> classlist = cMapper.selectAllclass();
     model.addAttribute("classlist", classlist);
 
+      ArrayList<Questions> questions = qMapper.selectByRoomId(roomId);
+    model.addAttribute("questions", questions);
+
     uMapper.UpdateUser(0, prin.getName());
-    return "waitroom.html";
+
+        String loginName = prin.getName();
+    if (id != uMapper.selectbyName(loginName)) {
+      uMapper.UpdateUser(id, loginName);
+    }
+  
+    ArrayList<Answers> answers = new ArrayList<Answers>();
+    for (Questions q : questions) {
+      ArrayList<Answers> hoge = aMapper.selectByQuestionId(q.getQuestionId());
+      for (Answers a : hoge) {
+        answers.add(a);
+      }
+    }
+    model.addAttribute("answers", answers);
+    model.addAttribute("loginName", loginName);
+    return "class.html";
   }
 
   @PostMapping("/addClass")
