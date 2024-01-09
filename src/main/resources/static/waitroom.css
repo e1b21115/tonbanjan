@@ -33,31 +33,32 @@ h3 {
   color: white;
   background: steelblue;
   padding: 1% 2%;  
+  cursor: pointer; 
 }
-/* 
+
 h3.open {
   background: midnightblue;
   padding-left: 4%;
-} */
-/* 
+}
+
 form {
   margin: 4% 4%; 
-} */
-/* 
+}
+
 h3.open + form {
   display: block;
-} */
-/* 
+}
+
 h3 form input {
   display: inline-block;
-} */
-/* 
+}
+
 input[type="submit"],
 input[type="reset"] {
   display: inline-block;
   margin-top: 10px;  
   margin-right: 10px;
-} */
+}
 
 h4 {
   transition: 0.5s;

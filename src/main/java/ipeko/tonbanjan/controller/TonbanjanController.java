@@ -83,6 +83,34 @@ public class TonbanjanController {
     return "class.html";
   }
 
+  @GetMapping("/delete")
+  public String delete(@RequestParam int id, ModelMap model, Principal prin) {
+
+    System.out.println("ああああああああああああ\n");
+    String loginName = prin.getName();
+    int roomId = qMapper.selectRoomIdByQuestionId(id);
+    Class Class = cMapper.selectByClassId(roomId);
+    model.addAttribute("Class", Class);
+
+    qMapper.deleteByQuestionId(id);
+    aMapper.deleteByQuestinoId(id);
+    sMapper.deleteByQuestionId(id);
+
+    ArrayList<Questions> questions = qMapper.selectByRoomId(roomId);
+    model.addAttribute("questions", questions);
+
+    ArrayList<Answers> answers = new ArrayList<Answers>();
+    for (Questions q : questions) {
+      ArrayList<Answers> hoge = aMapper.selectByQuestionId(q.getQuestionId());
+      for (Answers a : hoge) {
+        answers.add(a);
+      }
+    }
+    model.addAttribute("answers", answers);
+    model.addAttribute("loginName", loginName);
+    return "class.html";
+  }
+
   @GetMapping("SumSAns")
   public SseEmitter pushConut(Principal prin) {
     String loginUser = prin.getName();
