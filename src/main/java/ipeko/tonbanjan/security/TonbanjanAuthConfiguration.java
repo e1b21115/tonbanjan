@@ -59,11 +59,13 @@ public class TonbanjanAuthConfiguration {
         .password("{bcrypt}$2y$10$RTBVuLU8cWogbgMrPoPItuPz.kZSNG8q.98jVKNJBFqx6v0G8UdQu").roles("USER").build();
     UserDetails user2 = User.withUsername("user2")
         .password("{bcrypt}$2y$10$EHxZV90jvMPpdG93R39fOutiBp103qRsUSMswcY62mOVRTpPpBqE.").roles("USER").build();
+    UserDetails user3 = User.withUsername("user3")
+        .password("{bcrypt}$2y$10$M.bX1fpymkpz1X0tlZWPGem/ETREI5WaIVZJdpI9gJ9NXzNGWbzFG").roles("USER").build();
     UserDetails admin = User.withUsername("admin")
         .password("{bcrypt}$2y$10$dNYDu/FsSxtRYLwDu/coKOQKXH8EmyRTnyj/teQjItpJzGJTnEADu").roles("ADMIN").build();
 
     // 生成したユーザをImMemoryUserDetailsManagerに渡す（いくつでも良い）
-    return new InMemoryUserDetailsManager(user1, user2, admin);
+    return new InMemoryUserDetailsManager(user1, user2, user3, admin);
   }
 
 }

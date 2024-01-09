@@ -89,7 +89,6 @@ public class TonbanjanController {
   @GetMapping("/delete")
   public String delete(@RequestParam int id, ModelMap model, Principal prin) {
 
-    System.out.println("ああああああああああああ\n");
     String loginName = prin.getName();
     int roomId = qMapper.selectRoomIdByQuestionId(id);
     Class Class = cMapper.selectByClassId(roomId);
