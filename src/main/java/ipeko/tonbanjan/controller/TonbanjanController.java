@@ -19,7 +19,7 @@ import ipeko.tonbanjan.model.Questions;
 import ipeko.tonbanjan.model.QuestionsMapper;
 import ipeko.tonbanjan.model.UsersMapper;
 import ipeko.tonbanjan.service.AsyncSumSAnswers;
-
+import ipeko.tonbanjan.model.SendMapper;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 @Controller
@@ -36,6 +36,9 @@ public class TonbanjanController {
 
   @Autowired
   UsersMapper uMapper;
+
+  @Autowired
+  SendMapper sMapper;
 
   @Autowired
   AsyncSumSAnswers ssa;
