@@ -16,6 +16,9 @@
     <a th:each="questions :${questions}">
       <ul>
         <li>id:[[${questions.getQuestionId()}]] 質問文:[[${questions.getQ_content()}]]</li>
+
+        <li><a th:href="@{/delete(id=${questions.getQuestionId()})}">id:[[${questions.getQuestionId()}]] 削除</a></li>
+
       </ul>
     </a><br>
     <a id="asum"></a>
@@ -101,10 +104,12 @@
         var output = "";
         for (var i = 0; i < data.length; i = i + 4) {
           output += "質問Id: " + data[i].questionId + "<br>";
-          output += "選択肢1「"+ data[i].a_content +"」: " + data[i].amount + ", ";
-          output += "選択肢2「"+ data[i + 1].a_content +"」: " + data[i + 1].amount + ", ";
-          output += "選択肢3「"+ data[i + 2].a_content +"」: " + data[i + 2].amount + ", ";
-          output += "選択肢4「"+ data[i + 3].a_content +"」: " + data[i + 3].amount + "<br>";
+
+          output += "選択肢1「" + data[i].a_content + "」: " + data[i].amount + ", ";
+          output += "選択肢2「" + data[i + 1].a_content + "」: " + data[i + 1].amount + ", ";
+          output += "選択肢3「" + data[i + 2].a_content + "」: " + data[i + 2].amount + ", ";
+          output += "選択肢4「" + data[i + 3].a_content + "」: " + data[i + 3].amount + "<br>";
+
         }
         document.getElementById('asum').innerHTML = output;
       }
