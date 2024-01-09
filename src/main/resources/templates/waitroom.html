@@ -2,7 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
+
   <link rel="stylesheet" href="font-size.css">
+
   <title>待合室</title>
 </head>
 
@@ -47,7 +49,9 @@
 const links = document.getElementsByTagName("link");
 for (let i = 0; i < links.length; i++) {
   const link = links[i];
+
   link.href = link.href;
+
 }
 
 // あるいは
@@ -87,6 +91,7 @@ function fontSizeUp() {
     document.body.style.fontSize = parseFloat(getComputedStyle(document.body).fontSize) + 1 + 'px';
   }
 
+
   // フォントサイズを下げる関数
   function fontSizeDown() {
     document.body.style.fontSize = parseFloat(getComputedStyle(document.body).fontSize) - 1 + 'px';
@@ -103,6 +108,7 @@ bgInput.addEventListener("input", () => {
   const blue = red;
 
   const rgbColor = `rgb(${red}, ${green}, ${blue})`;
+
 
   document.body.style.backgroundColor = rgbColor;
 });

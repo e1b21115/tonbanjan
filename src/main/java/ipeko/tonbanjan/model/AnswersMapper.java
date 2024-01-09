@@ -38,6 +38,8 @@ public interface AnswersMapper {
   @Select("SELECT answers.questionId,answers.a_content,questions.q_content from answers JOIN questions ON answers.questionId=questions.questionId;")
   ArrayList<AnswersQuestions> selectAllAnswersQuestions();
 
+
   @Delete("DELETE FROM ANSWERS WHERE questionId = #{questionId}")
   void deleteByQuestinoId(int questionId);
+
 }

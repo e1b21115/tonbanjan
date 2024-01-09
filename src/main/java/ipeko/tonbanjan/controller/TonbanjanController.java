@@ -151,15 +151,19 @@ public class TonbanjanController {
     ArrayList<Class> classlist = cMapper.selectAllclass();
     model.addAttribute("classlist", classlist);
 
+
     ArrayList<Questions> questions = qMapper.selectByRoomId(roomId);
+
     model.addAttribute("questions", questions);
 
     uMapper.UpdateUser(0, prin.getName());
+
 
     String loginName = prin.getName();
     if (id != uMapper.selectbyName(loginName)) {
       uMapper.UpdateUser(id, loginName);
     }
+
 
     ArrayList<Answers> answers = new ArrayList<Answers>();
     for (Questions q : questions) {
@@ -182,6 +186,7 @@ public class TonbanjanController {
 
     ArrayList<Class> classlist = cMapper.selectAllclass();
     model.addAttribute("classlist", classlist);
+
     model.addAttribute("loginName", loginName);
     return "waitroom.html";
   }
@@ -213,6 +218,7 @@ public class TonbanjanController {
     model.addAttribute("loginName", loginName);
     return "class.html";
   }
+
 
   @GetMapping("SumSAns")
   public SseEmitter pushConut(Principal prin) {
