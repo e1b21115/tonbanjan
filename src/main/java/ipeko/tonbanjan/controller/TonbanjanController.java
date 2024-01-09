@@ -151,16 +151,20 @@ public class TonbanjanController {
     ArrayList<Class> classlist = cMapper.selectAllclass();
     model.addAttribute("classlist", classlist);
 
-      ArrayList<Questions> questions = qMapper.selectByRoomId(roomId);
+
+    ArrayList<Questions> questions = qMapper.selectByRoomId(roomId);
+
     model.addAttribute("questions", questions);
 
     uMapper.UpdateUser(0, prin.getName());
 
-        String loginName = prin.getName();
+
+    String loginName = prin.getName();
     if (id != uMapper.selectbyName(loginName)) {
       uMapper.UpdateUser(id, loginName);
     }
-  
+
+
     ArrayList<Answers> answers = new ArrayList<Answers>();
     for (Questions q : questions) {
       ArrayList<Answers> hoge = aMapper.selectByQuestionId(q.getQuestionId());
@@ -182,9 +186,39 @@ public class TonbanjanController {
 
     ArrayList<Class> classlist = cMapper.selectAllclass();
     model.addAttribute("classlist", classlist);
-     model.addAttribute("loginName", loginName);
+
+    model.addAttribute("loginName", loginName);
     return "waitroom.html";
   }
+
+  @GetMapping("/delete")
+  public String delete(@RequestParam int id, ModelMap model, Principal prin) {
+
+    System.out.println("ああああああああああああ\n");
+    String loginName = prin.getName();
+    int roomId = qMapper.selectRoomIdByQuestionId(id);
+    Class Class = cMapper.selectByClassId(roomId);
+    model.addAttribute("Class", Class);
+
+    qMapper.deleteByQuestionId(id);
+    aMapper.deleteByQuestinoId(id);
+    sMapper.deleteByQuestionId(id);
+
+    ArrayList<Questions> questions = qMapper.selectByRoomId(roomId);
+    model.addAttribute("questions", questions);
+
+    ArrayList<Answers> answers = new ArrayList<Answers>();
+    for (Questions q : questions) {
+      ArrayList<Answers> hoge = aMapper.selectByQuestionId(q.getQuestionId());
+      for (Answers a : hoge) {
+        answers.add(a);
+      }
+    }
+    model.addAttribute("answers", answers);
+    model.addAttribute("loginName", loginName);
+    return "class.html";
+  }
+
 
   @GetMapping("SumSAns")
   public SseEmitter pushConut(Principal prin) {
