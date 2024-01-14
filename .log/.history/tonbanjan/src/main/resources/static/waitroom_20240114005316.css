@@ -2,7 +2,7 @@ body {
   font-family: "Yu Gothic", sans-serif;
   padding: 30px;
   width: 50%;
-  background: linear-gradient(to right, #fbc2eb, #a6c1ee); 
+  background: #fff;
 }
 
 h1, h2, h3, h4, h5 {
@@ -39,12 +39,10 @@ h3 {
 h3.open {
   background: midnightblue;
   padding-left: 4%;
-  
 }
 
 form {
   margin: 4% 4%; 
-  display: none;
 }
 
 h3.open + form {
@@ -61,8 +59,6 @@ input[type="reset"] {
   margin-top: 10px;  
   margin-right: 10px;
 }
-
-
 
 h4 {
   transition: 0.5s;
@@ -111,11 +107,6 @@ h5.open {
 
 p {
   margin: 4% 4%; 
-  padding: 8px 8px;
-  background: #95f4f9;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px #17828e;
-  font-family: '源ノ角ゴシック'; 
   display: none;
 }
 
@@ -126,11 +117,6 @@ button {
 
 label {
   margin: 4% 4%; 
-  padding: 8px 8px;
-  background: #95f4f9;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px #17828e;
-  font-family: '源ノ角ゴシック'; 
   display: none;
 }
 

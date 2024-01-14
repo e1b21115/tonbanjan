@@ -50,7 +50,7 @@
 
         <div th:each="answers, stat:${answers}"
           th:if="${questions.getQuestionId() == answers.getQuestionId() && answers.getAnswerId() % 4 == 1}">
-          <input type="radio" th:attr="id='send_answer' + ${stat.count}" name="send_answer" value="1" required />
+          <input type="radio" th:attr="id='send_answer' + ${stat.count}" name="send_answer" value="1" />
           <label th:attr="for='send_answer' + ${stat.count}">
             [[${answers.getA_content()}]]
           </label><br>
@@ -58,7 +58,7 @@
 
         <div th:each="answers, stat:${answers}"
           th:if="${questions.getQuestionId() == answers.getQuestionId() && answers.getAnswerId() % 4 == 2}">
-          <input type="radio" th:attr="id='send_answer' + ${stat.count}" name="send_answer" value="2"  required/>
+          <input type="radio" th:attr="id='send_answer' + ${stat.count}" name="send_answer" value="2" />
           <label th:attr="for='send_answer' + ${stat.count}">
             [[${answers.getA_content()}]]
           </label><br>
@@ -66,7 +66,7 @@
 
         <div th:each="answers, stat:${answers}"
           th:if="${questions.getQuestionId() == answers.getQuestionId() && answers.getAnswerId() % 4 == 3}">
-          <input type="radio" th:attr="id='send_answer' + ${stat.count}" name="send_answer" value="3"  required/>
+          <input type="radio" th:attr="id='send_answer' + ${stat.count}" name="send_answer" value="3" />
           <label th:attr="for='send_answer' + ${stat.count}">
             [[${answers.getA_content()}]]
           </label><br>
@@ -74,13 +74,13 @@
 
         <div th:each="answers, stat:${answers}"
           th:if="${questions.getQuestionId() == answers.getQuestionId() && answers.getAnswerId() % 4 == 0}">
-          <input type="radio" th:attr="id='send_answer' + ${stat.count}" name="send_answer" value="4"   required/>
+          <input type="radio" th:attr="id='send_answer' + ${stat.count}" name="send_answer" value="4" />
           <label th:attr="for='send_answer' + ${stat.count}">
             [[${answers.getA_content()}]]
           </label><br>
         </div>
         <input type="submit" value="回答">
-      </form><br><hr>
+      </form><br id="yohaku">
       <br>
     </a>
   </div>

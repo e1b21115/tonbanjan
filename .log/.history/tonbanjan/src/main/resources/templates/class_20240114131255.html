@@ -9,7 +9,6 @@
 <link rel="stylesheet" href="class.css">
 
 <body>
-  <br>
   <a href="/logout">ログアウト</a>
   <h1>[[${Class.className}]]</h1>
 
@@ -18,7 +17,7 @@
       <ul>
         <li>id:[[${questions.getQuestionId()}]] 質問文:[[${questions.getQ_content()}]]</li>
 
-        <li><a th:href="@{/delete(id=${questions.getQuestionId()})}">id:[[${questions.getQuestionId()}]] 削除</a></li>
+        <li><p th:href="@{/delete(id=${questions.getQuestionId()})}">id:[[${questions.getQuestionId()}]] 削除</p></li>
 
       </ul>
     </a><br>
@@ -50,7 +49,7 @@
 
         <div th:each="answers, stat:${answers}"
           th:if="${questions.getQuestionId() == answers.getQuestionId() && answers.getAnswerId() % 4 == 1}">
-          <input type="radio" th:attr="id='send_answer' + ${stat.count}" name="send_answer" value="1" required />
+          <input type="radio" th:attr="id='send_answer' + ${stat.count}" name="send_answer" value="1" />
           <label th:attr="for='send_answer' + ${stat.count}">
             [[${answers.getA_content()}]]
           </label><br>
@@ -58,7 +57,7 @@
 
         <div th:each="answers, stat:${answers}"
           th:if="${questions.getQuestionId() == answers.getQuestionId() && answers.getAnswerId() % 4 == 2}">
-          <input type="radio" th:attr="id='send_answer' + ${stat.count}" name="send_answer" value="2"  required/>
+          <input type="radio" th:attr="id='send_answer' + ${stat.count}" name="send_answer" value="2" />
           <label th:attr="for='send_answer' + ${stat.count}">
             [[${answers.getA_content()}]]
           </label><br>
@@ -66,7 +65,7 @@
 
         <div th:each="answers, stat:${answers}"
           th:if="${questions.getQuestionId() == answers.getQuestionId() && answers.getAnswerId() % 4 == 3}">
-          <input type="radio" th:attr="id='send_answer' + ${stat.count}" name="send_answer" value="3"  required/>
+          <input type="radio" th:attr="id='send_answer' + ${stat.count}" name="send_answer" value="3" />
           <label th:attr="for='send_answer' + ${stat.count}">
             [[${answers.getA_content()}]]
           </label><br>
@@ -74,14 +73,14 @@
 
         <div th:each="answers, stat:${answers}"
           th:if="${questions.getQuestionId() == answers.getQuestionId() && answers.getAnswerId() % 4 == 0}">
-          <input type="radio" th:attr="id='send_answer' + ${stat.count}" name="send_answer" value="4"   required/>
+          <input type="radio" th:attr="id='send_answer' + ${stat.count}" name="send_answer" value="4" />
           <label th:attr="for='send_answer' + ${stat.count}">
             [[${answers.getA_content()}]]
           </label><br>
         </div>
+
         <input type="submit" value="回答">
-      </form><br><hr>
-      <br>
+      </form><br><br>
     </a>
   </div>
 

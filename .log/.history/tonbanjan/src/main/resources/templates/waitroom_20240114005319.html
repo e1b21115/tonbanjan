@@ -73,7 +73,7 @@
       h3.addEventListener('click', () => {
       h3.classList.toggle('open');
   
-      const items = document.querySelectorAll('input[type="text"],input[type="submit"],input[type="reset"]');
+      const items = document.querySelectorAll('input');
   
       items.forEach(item => {
         item.style.display = h3.classList.contains('open') ? 'block' : 'none';
@@ -115,7 +115,7 @@ for (let i = 0; i < links.length; i++) {
   h5.addEventListener('click', () => {
     h5.classList.toggle('open');
 
-    const items = document.querySelectorAll('p, button,label,input[type="range"]');
+    const items = document.querySelectorAll('p, button,label,input');
 
     items.forEach(item => {
       item.style.display = h5.classList.contains('open') ? 'block' : 'none';
