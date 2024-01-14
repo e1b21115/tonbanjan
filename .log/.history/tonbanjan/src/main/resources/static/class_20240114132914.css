@@ -1,0 +1,78 @@
+body {
+  font-family: "Avenir , 'Helvetica Neue', Helvetica, Arial";
+  background: linear-gradient(to right, #fbc2eb, #a6c1ee); 
+  color: #333;
+margin: 0;
+padding: 0;
+  }
+  
+  h1 {
+    font-size: 28px;
+    border-color: #088da5;
+  }
+  
+  p {
+  color: #666;
+  }
+  
+  a {
+  color: #00b8d4;
+  }
+  
+  /* input, textarea {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  } */
+  
+  form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 14px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+  
+  input[type="text"],
+  input[type="number"] {
+    padding: 6px;
+    border-radius: 3px;
+    outline: none;
+    border: 1px solid #dcdcdc;
+    width: 90%;
+  }
+  
+  input[type="submit"] {
+    background: #558dea;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+  
+  /* 行間 */
+  p,
+  form {
+  margin-bottom: 30px;
+  }
+  
+  /* 画面の横幅を制限 */
+  .container {
+  max-width: 700px;
+  margin: 0 auto;
+  }
+  
+  /* 全体の背景 */
+  body {
+  background-color: #f7f7f7;
+  }
+  
+  /* 枠線 */
+  section {
+  padding: 30px 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+  }

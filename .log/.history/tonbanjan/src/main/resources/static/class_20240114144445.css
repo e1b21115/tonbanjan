@@ -52,12 +52,9 @@ padding: 0;
   }
   
   /* 質問と選択肢を区切る */
-  hr {
-    height: 2px;
-    background-color: #1606ca;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-    border-radius: 1px;
-  }
+hr{
+  border-bottom: 1px solid #ccc;
+}
 
 /* 選択肢をインライン表示 */  
 .question-text input[type="radio"],
@@ -72,6 +69,12 @@ padding: 0;
   font-size: 16px;
 }
 
+br[id="yohaku"]{
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+}
 
 /* 回答ボタンを目立たせる */
 input[type="submit"] {

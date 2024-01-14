@@ -38,13 +38,23 @@
 
       <div>
         <label for="letterSpacingRange">字間</label>
-        <input id="letterSpacingRange" type="range" min="0" max="0.8" step="0.1" value="0">
+        <input id="letterSpacingRange" type="range" min="-0.5" max="0.5" step="0.1" value="0">
       </div>
     
       <!-- 行間調整 -->
       <div>
         <label for="lineHeightRange">行間</label>
-        <input id="lineHeightRange" type="range" min="1.2" max="2" step="0.1" value="1.2"> 
+        <input id="lineHeightRange" type="range" min="1" max="2" step="0.1" value="1.2"> 
+      </div>
+    
+      <!-- レイアウト変更 -->
+      <div>
+        <label for="layoutSelect">レイアウト</label>
+        <select id="layoutSelect">
+          <option value="default">デフォルト</option>
+          <option value="narrow">狭列</option>
+          <option value="wide">広列</option>
+        </select>
       </div>
     
     </div>
@@ -62,6 +72,12 @@
       document.body.style.lineHeight = lineHeightRange.value; 
     });
     
+    // レイアウト変更
+    const layoutSelect = document.getElementById('layoutSelect');
+    layoutSelect.addEventListener('change', () => {
+      document.body.classList.remove('default', 'narrow', 'wide');
+      document.body.classList.add(layoutSelect.value);
+    });
     </script>
     </div>
   <br>
@@ -73,7 +89,7 @@
       h3.addEventListener('click', () => {
       h3.classList.toggle('open');
   
-      const items = document.querySelectorAll('input[type="text"],input[type="submit"],input[type="reset"]');
+      const items = document.querySelectorAll('input');
   
       items.forEach(item => {
         item.style.display = h3.classList.contains('open') ? 'block' : 'none';
@@ -115,7 +131,7 @@ for (let i = 0; i < links.length; i++) {
   h5.addEventListener('click', () => {
     h5.classList.toggle('open');
 
-    const items = document.querySelectorAll('p, button,label,input[type="range"]');
+    const items = document.querySelectorAll('p, button');
 
     items.forEach(item => {
       item.style.display = h5.classList.contains('open') ? 'block' : 'none';

@@ -54,7 +54,7 @@ padding: 0;
   /* 質問と選択肢を区切る */
   hr {
     height: 2px;
-    background-color: #1606ca;
+    background-color: #120f0f;
     box-shadow: 0 2px 5px rgba(0,0,0,0.5);
     border-radius: 1px;
   }

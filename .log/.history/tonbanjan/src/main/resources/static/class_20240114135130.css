@@ -1,8 +1,7 @@
 body {
-  font-family: "游ゴシック", YuGothic, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  font-family: "Avenir , 'Helvetica Neue', Helvetica, Arial";
   background: linear-gradient(to right, #fbc2eb, #a6c1ee); 
   color: #333;
-  font-size: 16px;
 margin: 0;
 padding: 0;
   }
@@ -51,43 +50,14 @@ padding: 0;
     width: 90%;
   }
   
-  /* 質問と選択肢を区切る */
-  hr {
-    height: 2px;
-    background-color: #1606ca;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-    border-radius: 1px;
+  input[type="submit"] {
+    background: #558dea;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    cursor: pointer;
   }
-
-/* 選択肢をインライン表示 */  
-.question-text input[type="radio"],
-.question-text label {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-/* 選択肢の余白、フォント揃える */
-.question-text label {
-  margin-left: 10px; 
-  font-size: 16px;
-}
-
-
-/* 回答ボタンを目立たせる */
-input[type="submit"] {
-  border-bottom: 1px solid #ccc;
-  background-color: #558dea;
-  color: #fff;
-  border-radius: 16px;
-  padding: 10px 20px;
-  font-size: 14px; 
-}
-
-/* 要素の余白 */
-.question-text,
-input[type="submit"] {
-  margin-bottom: 30px;
-}
   
   /* 行間 */
   p,
@@ -96,7 +66,7 @@ input[type="submit"] {
   }
 
   div[class="question-text"]{
-    font-size: 20px;
+    font-size: 24px;
   }
   
   /* 画面の横幅を制限 */
