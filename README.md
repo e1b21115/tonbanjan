@@ -13,4 +13,4 @@
 ・[Role_adminでログインするときの利用方法](https://github.com/e1b21115/tonbanjan/blob/main/manual/user_manual/RoleAdmin_Readme.md)
 
 ### [セットアップマニュアル]
-[webアプリケーションの利用方法](https://github.com/e1b21115/tonbanjan/blob/write_SetUpManual/manual/SetUpReadme.md)
+・[webアプリケーションの利用方法](https://github.com/e1b21115/tonbanjan/blob/main/manual/SetUpReadme.md)
