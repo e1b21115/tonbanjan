@@ -7,6 +7,6 @@
 ・DBを利用したwebアプリケーション
 
 ## マニュアル一覧
-### [ユーザーマニュアル](rink)
+### [ユーザーマニュアル](https://github.com/e1b21115/tonbanjan/blob/write_SetUpManual/manual/user_manual)
 
 ### [セットアップマニュアル](https://github.com/e1b21115/tonbanjan/blob/write_SetUpManual/manual/SetUpReadme.md)
