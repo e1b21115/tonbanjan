@@ -7,8 +7,6 @@
 
 「待合室へ移動」をクリックすると,ログインページへ移動し,UsernameとPasswordの入力フォームが表示されるので,Usernameには「admin」のいずれかを入力し,Passwordには共通で「pass」と入力して「Sign in」をクリックしてください.
 
-(Userでログインする際の利用方法は( https://github.com/e1b21115/tonbanjan/blob/main/manual/user_manual/RoleUser_Readme.md )に表記されています。）
-
 ・「Sign in」をクリックすると、待合室のページに移動します.
 
 ### 2．待合室のページでの利用方法
